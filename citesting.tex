@@ -261,7 +261,75 @@ The last equality is by the assumption that there are no atoms on $X$ axis.
 The same argument as above works for the conditional covariance. The family $\mathcal G$ used in the proof of the Theorem \ref{th:1} is a family of densities for which $E(XY|Z)=E(X|Z)E(Y|Z)$. 
 
 
-% \paragraph{Other approach that assumes continuity also partially works}
+\paragraph{Other approach that assumes continuity also partially works}
+Let 
+
+\[
+a(z_1,z_2,z_3,z_4) = |z_1-z_2| - |z_1-z_3| -|z_4-z_2|+|z_3-z_4|  
+\]
+for $z_1',z_2',z_3',z_4'$ we have 
+\begin{align}
+|a(z_1,z_2,z_3,z_4) - a(z_1',z_2',z_3',z_4')| \leq 2 \sum_{i=1}^4 |z_i-z_i'| 
+\end{align}
+
+\begin{lemma}
+ Let $\{Y_n,W_n\}$ be a sequance of random variables and $X$ be some random variable such that $|X-Y_n| \leq |W_n|$. If $P(|W_n| > \frac {1}{\sqrt n} )$ converges to zero   then
+ \[
+  \lim_{n \to \infty } E \sqrt n (sgn(Y_n) - sgn(X)) = 0
+ \]
+\end{lemma} 
+\begin{proof}
+For any $\epsilon> 0$ there exist $\delta>0$ such that $P(|X| < \delta  ) \leq \frac \epsilon 2$. We will bound the difference $E \sqrt n (sgn(Y_n) - sgn(X))$,
+\begin{align}
+E & \sqrt n (sgn(Y_n) - sgn(X))= \\
+& E \sqrt n \mathbf  1 \{ |W_n| < \delta ) , |X| > \delta \} 0 \\
+&+ E \sqrt n \mathbf 1 \{ |W_n| < \delta)  , |X| < \delta\}  (sgn(Y_n) - sgn(X)) \\
+&+ E \sqrt n \mathbf 1 \{ |W_n| > \delta  \}  (sgn(Y_n) - sgn(X)).  
+ \end{align}
+The last two terms are smaller than $\epsilon$
+ \begin{align}
+\lim_{n \to \infty}&   E\sqrt n \mathbf 1 \{ |W_n| > \delta   \}  |sgn(Y_n) - sgn(X)| \leq \lim_{n \to \infty} P(2 \sqrt n |W_n|>\delta) =0, \\
+\lim_{n \to \infty}&   E \sqrt n \mathbf 1 \{ |W_n| < \delta )  , |X| < \delta  \}  |sgn(Y_n) - sgn(X)| \leq 2 P(|X| < \delta) \leq \epsilon. \\
+\end{align}
+\end{proof}
+
+\begin{Theorem}
+ Given samples $(X_i,Y_i,Z_i)$ let $X^{i},Y^{i},Z^{i}$ be a sequance of observations ordered increasingly  by $Z_i$. Let
+ \[ 
+B_i = sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3}))  
+ \]
+where  $i=4k$ for positive $k$ smaller than $n/4-1$. If for all $w$ in set $i,i+1,i+2,i+3$ exist random variables $\bar X^{k}$, distributed as $X_i$, such that  $\lim_{n \to \infty } P(|\bar X^{k} - X^{k}| > \frac{1}{\sqrt n}) $ converges to zero (same for $Y$) then 
+\[
+ \frac{1}{\sqrt n} \sum_{i=0;i=+4;n} B_i -\frac{1}{2}  
+\]
+converges to normal distribution iff $X,Y,Z$ are conditionally independent
+\end{Theorem}
+\begin{proof}
+Trivial.  But no seriously, define
+\[
+ \bar B_i = sgn(a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3})) sgn(a(\bar Y^{i},\bar Y^{i+1},\bar Y^{i+2},\bar Y^{i+3}))
+\]
+By bergsma $E \bar B_i = 0.5$ iff $\bar X_i , \bar Y_i$ are independent. If they $X,Y,Z$ are conditionally independent
+\[
+ \frac{1}{\sqrt n} \sum_{i=0;i=+4;n} B_i -E B_i 
+\]
+converges to normal rv. It is sufficient to prove that $\sqrt n E (B_i - \bar B_i) =0$.  Using the fact that 
+\[
+ 2a(x)a(y) - 2a(\bar x) a(\bar y) = (a(x) - a(\bar x))(a(y) + a(\bar y)) + (a(x) + a(\bar x))(a(y) - a(\bar y))
+\]
+it is sufficient to prove that
+\[
+ \sqrt n E sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) - sgn(a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3}))
+\]
+converges to 0, which follow form two Lemmas above the proof.
+\end{proof}
+
+
+
+
+
+
+
 % Let's assume that there exists a distribution free test for independence, actually just take test by Bergsma and hope it works. 
 % For Bergsma test we need four copies of $X$ and four copies of $Y$. We order our real, uniform  $Z$'s and. The average distance between any four consecutive distance will be $4/n$ for $n$ $Z$'s. Assume that we have $P(|z_1) -P(|z_2)$ converges in total variation like $\frac{1}{\sqrt n}$ or faster. Then Bergsma test will asymptotically work. Otherwise it will may fail, and its probably possible to construct an example when it fails.     
 
