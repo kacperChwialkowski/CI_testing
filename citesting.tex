@@ -163,24 +163,7 @@ The above equation \eqref{eq:fatality} is a polynomial of $m$ variables $\alpha_
 
 
 
-% \begin{definition}
-%  A property $\mathcal{A}$ of probability measure is almost surely testable of order $r$, if there exists almost surely estimable function $\theta$  such that $\theta(P,t) =0$  if and only if $P$ has a property $\mathcal{A}$.   
-% \end{definition}
-% 
-% We have shown that two sample problem is almost surely one testable. 
 
-% \begin{lemma}
-% Independence test for real valued random variables is almost surely testable of order two (which implies it is not of order one!).
-% \end{lemma}
-% \begin{proof}
-% Define the function
-% \[
-%  h(X,Y,X',Y',t_1,t_2) = k((X,Y),(t_1,t_2)) - k((X,Y'),(t_1,t_2)).
-% \]
-% where $k$ is a kernel on the $\mathbf R^2$. We have posed the independence problem as a two sample problem on the product space -- if proof that the problem is at least two testable. Now we show that it is not one testable. 
-% 
-% Let $\mathcal{P}$ be a family of distributions $(X,Y)$ such that $X,Y $ are uniform on the rectangles $(a,b)\times (c,d)$. Assume to the contrary that  there exist $h$ such that  $E h(X,Y,t)=0$ is zero almost surely, for all $X,Y \in \mathcal{P}$. This on the other hand implies that for any fixed $t$,  $h(x,y,t)=0$ for all $x,y$. Therefore $h$ is identically zero and can not distinguish between independent and dependent random variables.  
-% \end{proof}
 
 \begin{Theorem}
 \label{th:1}
@@ -230,14 +213,6 @@ By equation \ref{ref:eqg} we have
 Since for any  sequence $ (a_i,b_i)\times (c_i,d_i) $, there exists  $t: t(z_i) = (a_i,b_i)\times (c_i,d_i) $, $h=0$. 
 \end{proof}
 
-% \paragraph{Other estimators and tests}
-% Gareth Peters has brought to my attention the following issue: is it true that all tests can be written this way 
-% \[
-%  E h(X_1,Y_1,Z_1,\cdots) =0.
-% \]
-% I don't think so, the example I think is testing if median is zero. In my limited experience it seems to me that almost all independence tests I've seen are some variations of Kolmogorov-Smirnov test or Von-Mises test. We have covered Von-Mises tests and KS test are somewhat similar to M-estimators, for which this technique will work. 
-% 
-% The question remains, does there exist way build an estimator which will converge at rate $\frac{1}{\sqrt{T}}$ where $T$ is time required to calculate a statistic ? 
 
 \paragraph{Mistake in the proof in \cite{bergsma2004testing}.}
 In the proof of the Theorem 2 it is assumed that marginal distribution of conditioning variable has no atoms (in this case $Z$ and $Y$ are  conditionally independent given $X$). Then he claims that for any choice of points ($r$ is fixed)
@@ -262,6 +237,19 @@ The same argument as above works for the conditional covariance. The family $\ma
 
 
 \paragraph{Other approach that assumes continuity also partially works}
+\begin{lemma}
+ Let 
+ \[
+  a(z_1,z_2,z_4,z_4) = |z_1-z_2| -|z_1-z_3|-|z_2-z_4|+|z_4-z_3|
+ \]. 
+ For any $z_1',z_2',z_3',z_4'$,
+ \[
+  | a(z_1,z_2,z_4,z_4) -  a(z_1',z_2',z_4',z_4')| \leq 2\sum_{i=1}^4 |z_i-z_i'|
+ \]
+\end{lemma}
+
+
+
 \begin{lemma}
  Let $\{Y_n,W_n\}$ be a sequance of random variables and $X$ be some random variable such that $|X-Y_n| \leq |W_n|$. If $P(|W_n| > \frac {1}{\sqrt n} )$ converges to zero   then
  \[
@@ -288,7 +276,7 @@ The last two terms are smaller than $\epsilon$
  \[ 
 B_i = sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3}))  
  \]
-where  $i=4k$ for positive $k$ smaller than $n/4-1$. If for all $w$ in set $i,i+1,i+2,i+3$ exist random variables $\bar X^{k}$, distributed as $X_i$, such that  $\lim_{n \to \infty } P(|\bar X^{k} - X^{k}| > \frac{1}{\sqrt n}) $ converges to zero (same for $Y$) then 
+where  $i=4k$ for positive $k$ smaller than $n/4-1$. If for all $w$ in set $i,i+1,i+2,i+3$ exist random variables $\bar X^{w}$, distributed as $X_i$, such that  $P(|\bar X_i - \bar X_i| > a) \leq  P(|\bar X^{i} - X^{i+3}|^p > a) $ converges to zero (same for $Y$) then 
 \[
  \frac{1}{\sqrt n} \sum_{i=0;i=+4;n} B_i -\frac{1}{2}  
 \]
@@ -307,12 +295,24 @@ converges to normal rv. It is sufficient to prove that $\sqrt n E (B_i - \bar B_
 \[
  2a(x)a(y) - 2a(\bar x) a(\bar y) = (a(x) - a(\bar x))(a(y) + a(\bar y)) + (a(x) + a(\bar x))(a(y) - a(\bar y))
 \]
-it is sufficient to prove that
+it is sufficient to study 
 \[
  \sqrt n E sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) - sgn(a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3}))
 \]
-converges to 0, which follow form two Lemmas above the proof.
+first one is $Y_n$ and second is $X$. Lemma two shows that is enough to boud 
+\[
+ P( 4|Z_i-\bar Z_i| > \delta_n) = P( 4|Z^i - Z^{i+4}|^p > \delta_n  ) 
+\]
+and 
+\[
+ RT_n = P( |X| < \delta_n ) = \frac{C} {\delta_n}
+\]
+sum of $RT_n$ converges to zero for $\delta_n=n$. 
+$n 4|Z_i-\bar Z_i|$ converges to gamma(4,1). Since $p<0.5$ and $\delta_n=n$, $P( n4|Z^i - Z^{i+4}| > 1/n ) $ 
+is probability of beta beeing greater than $  1/n$ which is no more than $1/n$.
 \end{proof}
+
+
 
 
 
