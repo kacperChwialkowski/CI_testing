@@ -41,10 +41,10 @@
 
 
 
-\paragraph{Alternative proof}
-All the equalities in the following note all equations hold almost everywhere, unless explicitly specified otherwise.
+\paragraph{Alternative proof.}
+All the equations (for functions) in the following note  hold almost everywhere, unless explicitly specified otherwise.
 \begin{definition}
- A parameter  $\theta$ of a probability measure $p \in \mathcal P$, $\mathcal P$ being a set of probability measures, is a function $\mathcal P  \to  \mathbf R$.   
+ A parameter  $\theta$ of a probability measure $p \in \mathcal P$, where $\mathcal P$ is a set of probability measures, is a function $\mathcal P  \to  \mathbf R$.   
 \end{definition}
 
 
@@ -53,22 +53,22 @@ All the equalities in the following note all equations hold almost everywhere, u
 A parameter  $\theta$ is called estimable of degree $r$, if $r$ is the smallest number for which there is a bounded function $h : \mathbf R^{r} \to \mathbf R$ such that, for all $p \in \mathcal P$, $ \theta(p) = Eh(X_1, \cdots , X_r)$ (exactly),  if $X_i$ are iid random variables sampled according to $p$.
 \end{definition}
 
-\cite{bergsma2004testing} introduces a concept of testability which is, if we can use computer science nomenclature, a 'syntactic sugar' on the concept of estimable parameter.
+\cite{bergsma2004testing} introduces a concept of testability which is a 'syntactic sugar' on the concept of estimable parameter.
 
 \begin{definition}[testability, \cite{bergsma2004testing}]
- Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of estimable parameters which are zero on all elements of $\mathcal{P}$ and non-zero on at least one element of $\mathcal{P}'$.  $\mathcal{P}$ is testable if and only if $\Theta$ is non-empty.    
+ Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of  estimable parameters which are zero on all elements of $\mathcal{P}$.  $\mathcal{P}$ is testable if and only if $\Theta$ contains only $0$ function.    
 \end{definition}
 
 
 
-Non-testability implies that a statistical test based on $U$-statistics can not be conducted, which does not rule out, as remarked by G. Peters, possibility of creating tested based on e.g. M-estimator.  The lemmas we give next are a used in the proof of the Theorem  \ref{th:1}, stating non-testability of conditional independence, . 
+Non-testability implies that a statistical test based on $U$-statistics can not be conducted, which does not rule out, as remarked by G. Peters, possibility of creating tested based on some other estimators e.g. M-estimator. The lemmas we give next are a used in the proof of the Theorem  \ref{th:1}, stating non-testability of conditional independence. 
 
 \begin{lemma}
 \label{lem:aha}
  The only polynomial of $m$ variables that is zero on the $m$-dimensional simplex is $\sum_{i=1}^m x_i-1$ and $0$.  
 \end{lemma}
 \begin{proof}
-Consider restriction of the polynomial on the $R^m$ space  the affine space $\sum_{i=1}^m x_i=1$  -- this restriction is a polynomial of $m-1$ variables as seen by substitution $x_1 = 1 -\sum_{i=2}^m x_i$. This restriction zero is on the simplex $0 \leq x_i \leq 1$, therefore it must be zero on the whole affine space  $\sum_{i=1}^m x_i=1$. This is due to the fact that set of zero of the polynomial is nowhere dense on its domain. The only polynomials that are zero on a set $\sum_{i=1}^m x_i=1$ are $\sum_{i=1}^m x_i-1$ and $0$.   
+Consider restriction of the polynomial on the $R^m$ space  the affine space $\sum_{i=1}^m x_i=1$  -- this restriction is a polynomial of $m-1$ variables as seen by substitution $x_1 = 1 -\sum_{i=2}^m x_i$. This restriction zero is on the simplex $0 \leq x_i \leq 1$, therefore it must be zero on the whole affine space  $\sum_{i=1}^m x_i=1$. This is due to the fact that set of zeros of the polynomial is nowhere dense on its domain. The only polynomials that are zero on a set $\sum_{i=1}^m x_i=1$ are $\sum_{i=1}^m x_i-1$ and $0$.   
 \end{proof}
 
 
@@ -88,13 +88,13 @@ then $h$ is equal to zero.
 
 
 \begin{proof}
-Assume to the contrary that there exists a function $h$ and the set of a positive measure $A$, such that $\int_{A} h^2 > \epsilon$ and   
+Assume to the contrary that there exists a function $h$ and the set of a positive measure $A$, such that $\int_{A} h^2 > \epsilon^2$ and   
 $$
 E h(Z_1,\cdots,Z_r) = 0,
 $$
 for all id random variables $(Z_1,\cdots,Z_r)$.
 
-\textbf{Outline.} We first construct a function $g$ that  approximates function $h$ on some hypercube $C$ that contains the set $A$.  $\epsilon$-close approximation ($\| h-g\|_{L_2(C)} \leq \epsilon^2$) will be piecewise constant on small  $r$-dimensional hypercubes; additionally, for a specific family of random variables $\mathcal{F}$, the property $E g(Z_1,\cdots,Z_r)=0, Z \in \mathcal{F}$ will hold. Next we will show that $g=0$ and conclude that $h=0$. The contradiction comes from the fact that $\int_{C} h^2 \leq \epsilon$ but by the assumption $\int_{A} h^2 > \epsilon$.  
+\textbf{Outline.} We first construct a function $g$ that  approximates function $h$ on some hypercube $C$ contained in  the set $A$.  $\epsilon$-close approximation ($\| h-g\|_{L_2(C)} \leq \epsilon^2$) will be piecewise constant on small  $r$-dimensional hypercubes; additionally, for a specific family of random variables $\mathcal{F}$, the property $E g(Z_1,\cdots,Z_r)=0, Z \in \mathcal{F}$ will hold. Next we will show that $g=0$ and conclude that $\| h\|_{L_2(C)}\leq \epsilon$. The contradiction comes from the fact that $\| h\|_{L_2(C)}\leq \epsilon$ but by the assumption $\int_{A} h^2 > \epsilon^2$.  
 
 Let $C=[-a,a]^r$ be a hypercube that contains the set $A$. For an interval $[-a,a]$ and some integer $m>0$, let $x_i = a(-1 + \frac{2i}{m})$, for $0 \leq i \leq m$, be a sequence of points that divide the interval $[-a,a]$ into subintervals of an equal length $\frac{2}{m}$. Since $h$ is bounded, there exists $M$ such that for all $m>M$, $h$ can be approximated using step functions on the sub-hypercubes of the hypercube $C$ with the grid defined by the sequence $x_i$. The vertices of the sub-hypercubes are $r$ dimensional points in the set  $\{ (x_{i_1},x_{i_1+1}) \times \cdot \times (x_{i_r},x_{i_r+1})\}$ for a sequence of the indexes $0 \leq i_1, \cdots, i_r\leq m$. By construction, the approximation of function  $h$,  function $g$, is $\epsilon$ close to $h$ in squared norm, that is
  \[
@@ -123,7 +123,7 @@ Formally speaking, $f \in \mathcal{H}$ is not the same as $f \in \mathcal L_2$, 
 
 Let $\mathcal H^r$ be a space of function spanned by basis $e_{i_1}(z_1) \cdots  e_{i_r}(z_r)$ for for $0\leq i_1,\cdots,i_r\leq m$. Similarly to $\mathcal{H}$, $\mathcal H^r$ is  isometrically isomorphic to  the $r \times m$ dimensional Euclidean space, and its inner product coincides with an inner product on the $L_2(C)$ space. 
 
-Using basis $e_{i_1}(z_1) \cdots  e_{i_r}(z_r)$,  we construct the best (with respect to squared norm) piecewise  constant  approximation of $h$.  The best constant approximation of a function, over some set, is its mean. We  For any small hypercube $S =  \{ (x_{i_1},x_{i_1+1}) \times \cdot \times (x_{i_r},x_{i_r+1})\}$ we set $g$ to a mean value of $h$ over this hypercube; formally we set coefficients $\beta_{i_1,\cdots,i_r}$ to normalized mean value and use them to define $g$
+Using basis $e_{i_1}(z_1) \cdots  e_{i_r}(z_r)$,  we construct the best (with respect to squared norm) piecewise  constant  approximation of $h$.  The best constant approximation of a function, over some set, is its mean. For any small hypercube $S =  \{ (x_{i_1},x_{i_1+1}) \times \cdot \times (x_{i_r},x_{i_r+1})\}$ we set $g$ to a mean value of $h$ over this hypercube; formally we set coefficients $\beta_{i_1,\cdots,i_r}$ to normalized mean value and use them to define $g$
 \[
 \beta_{i_1,\cdots,i_r} = \frac{ \int_{S} h(z_{i_1},\cdots,z_{i_r} ) dz_1 \cdots dz_r} { (2/m)^r} 
 \]
@@ -206,16 +206,16 @@ Denote $g_{\mu}( Z_1,\cdots,Z_r) = E h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r | Z_1,\c
 &g_{\mu}(Z_1, \cdots,Z_r ). 
 \end{align}
 
-For the fixed functions $p(x|z)p(y|z)$, the marginal distribution of $Z$ can be chosen  arbitrarily. Since  By Lemma \ref{the:Lemma}, $g_{\mu}=0$ for all $p(x|z)p(y|z)$.  
+For the fixed functions $p(x|z)p(y|z)$, the marginal distribution of $Z$ can be chosen  arbitrarily.   By Lemma \ref{the:Lemma}, $g_{\mu}=0$ for all $p(x|z)p(y|z)$.  
 
-The inner conditional expected value, for almost all fixed values of $z_1, \cdots,z_r$, $z_i\neq z_j$ for $i\neq j$, is 0
+The inner conditional expected value is 0 for almost all fixed values of $z_1, \cdots,z_r$. We only need to consider  the case   $z_i\neq z_j$ for $i\neq j$, since $P(z_i= z_j)=0$. 
 \begin{align}
 \label{ref:eqg}
  \int &h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r)  \prod_{i=1}^{r} f(x_i|z_i)f(y_i|z_i) dx_i dy_i = 0.
 \end{align}
 Let $I$ be a set of all intervals on the real line. Let  $T$ be all family of all functions $R \to I^2$. Consider a family of densities $\mathcal G$
 \[
- 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} p(z): t \in T
+ \mathcal G = \bigg \{ 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} p(z) | t \in T \bigg \}
 \]
 where $p(z)$ is some density. All $g \in \mathcal G$ are conditionally independent. For any element $g \in \mathcal G$.
 \begin{align}
@@ -262,16 +262,6 @@ The same argument as above works for the conditional covariance. The family $\ma
 
 
 \paragraph{Other approach that assumes continuity also partially works}
-Let 
-
-\[
-a(z_1,z_2,z_3,z_4) = |z_1-z_2| - |z_1-z_3| -|z_4-z_2|+|z_3-z_4|  
-\]
-for $z_1',z_2',z_3',z_4'$ we have 
-\begin{align}
-|a(z_1,z_2,z_3,z_4) - a(z_1',z_2',z_3',z_4')| \leq 2 \sum_{i=1}^4 |z_i-z_i'| 
-\end{align}
-
 \begin{lemma}
  Let $\{Y_n,W_n\}$ be a sequance of random variables and $X$ be some random variable such that $|X-Y_n| \leq |W_n|$. If $P(|W_n| > \frac {1}{\sqrt n} )$ converges to zero   then
  \[
@@ -328,230 +318,6 @@ converges to 0, which follow form two Lemmas above the proof.
 
 
 
-
-
-% Let's assume that there exists a distribution free test for independence, actually just take test by Bergsma and hope it works. 
-% For Bergsma test we need four copies of $X$ and four copies of $Y$. We order our real, uniform  $Z$'s and. The average distance between any four consecutive distance will be $4/n$ for $n$ $Z$'s. Assume that we have $P(|z_1) -P(|z_2)$ converges in total variation like $\frac{1}{\sqrt n}$ or faster. Then Bergsma test will asymptotically work. Otherwise it will may fail, and its probably possible to construct an example when it fails.     
-
-
-% Let's assume that we observe $X_i,Y_i,Z_i$ for $1 \leq i \leq n$, and there every value of $Z_i$ occurs exactly twice (all random variables are real). We sort our sequence by $Z_i$ so that $Z_{i+1}=Z_{i}$ for even $i$. We construct new series 
-% \[
-%  S_i = sig(X_i-X_{i+1})sig(Y_i-Y_{i+1})
-% \]
-% If, on the interval $[0,1]$ the conditional independence does not hold i.e. if $Z \in [0,1]$ then $X$ and $Y$ are dependent and  for $Z_i \in [0,1]$, $S_i$ is not symmetric e.g. $p(S_i=1)= 0.6$, then the big statistic
-% \[
-%  S = \frac 1 n \sum_{i=1}^n S_i
-% \]
-% will converge to $P(Z \in [0,1])0.6 +P(Z \nsubseteq [0,1])0.5 \neq 0.5  $.
-% 
-% To drop the assumption about having the same values of $Z_i$, I think it is sufficient to assume that  $p(x,y,z)$ is smooth. I think that the statistic
-% \[
-%  S_i = sig(f(X_i)-f(X_{i+1}))sig(g(Y_i)-g(Y_{i+1}))
-% \]
-% for 'random' $f$ and $g$ could give almost surely consistent statistic test.  
-
-% \begin{Theorem}
-%  Suppose that the random vector $X,Y,Z$ has a density $p$ and $Z$ has no atoms. The property of conditional independence $p(x,y,z)p(z) = p(x,z)p(y,z)$ is not testable of order one. 
-% \end{Theorem}
-% 
-% \begin{proof}
-% \begin{align}
-%  E (X_1,Y_1,Z_1, \cdots, X_n,Y_n,Z_n) = E (E h(X_1,Y_1,Z_1, \cdots, X_n,Y_n,Z_n) | Z_1,\cdots,Z_n) = E g(Z_1,\cdots,Z_N) =0  
-% \end{align}
-% First we show  that if $Z_1$ is an arbitrary then  $E g(Z_1,\cdots,Z_n)=0$ for all $Z$  implies  that $g=0$. This is clear to me if $g$ is continuous. But this implies that $E h(X_1,Y_1,Z_1, \cdots, X_n,Y_n,Z_n) | Z_1,\cdots,Z_n) =0$
-% \[
-%  \int h(x_1,y_1,z_1, \cdots, x_n,y_n,z_n) g(x_1,y_1|z_1) \cdots g(x_n,y_n|z_n) 
-% \]
-% Since $P(Z_i=Z_j) =0$ for any $j\neq i$ it is sufficient to consider $Z_i \neq Z_j$ for all $i,j$. $ g(x_1,y_1|z_1) \cdots g(x_n,y_n|z_n)$ are different densities so the problem boils down to the aboves lemma. 
-% \end{proof}
-
-
-
-% \begin{proof}
-%  Let $\mathcal{P}$ be a family of uniform distributions $[(X_1,Y_1 \cdots, X_n,Y_n,)] $ such that $X_i,Y_i $ is uniform on the rectangle $(a_i,b_i)\times (c_i,d_i)$. We infer that $h(X_1,Y_1,t_1, \cdots, X_n,Y_n,t_n)$ is zero for any set of rectangles and therefore it is zero everywhere for any $t_1,\cdots, t_n$.  
-% \end{proof}
-% 
-% 
-% \begin{proof}
-%  Suppose there exists a function such that $Eh(X,Y,t) = 0$ almost surely if and only is $X,Y$ are independent. Consider a family of degenerate random variables $\mathcal{P} = \{X_a,Y_b\}\_{a,b \in (\mathbf R,\mathbf R)}$. This is a family of independent random variables and it implies that $f(a,b,t) = 0$ for all $a,b$. Therefore $f$ is identically zero for all $t$.     
-% \end{proof}
-% The same result can be proved using non-degenerate random variables.    
-% 
-% \begin{lemma}
-%  The independence is not almost surely testable of order one.
-% \end{lemma}
-% \begin{proof}
-%  Suppose there exists a function such that $Eh(X,Y,t) = 0$ for all $X,Y$ that are independent. Take point mass distributions at all points $x,y$ and infer that $h(x,y,t)=0$ so $h$ must be zero tadam. 
-% \end{proof}
-% 
-% 
-% The conditional density of a function of $z$, and so
-% \begin{proof}
-%  There exist four product distributions on a product space ${a,b}^2$ namely $P_1,P_2,P_3,P_4$ such that  masses of those measures span $R^4$, or in other words 
-% \[
-% M= \begin{bmatrix}
-% P_1(a,a) & \cdots & P_1(b,b)     \\
-% \vdots &      \ddots     & \vdots \\
-% P_4(a,a)        & \cdots & P_4(b,b)
-% \end{bmatrix}
-% \]
-% is of full rank.  From the testability assumption we have for $f = [f(a,a,t),f(a,b,t),f(b,a,t),f(b,b,t) ]$  we have $M f=0$. Since $M$ is of full rank we infer that $f(a,b,t)=0$ for any $a,b$. Therefore for all $t$, $f$ is identically zero.   
-% \end{proof}
-% 
-
-% \section{Failures}
-% 
-% 
-% 
-% 
-% \paragraph{Mean embedding}
-% 
-% Suppose $X$ is conditionally independent of $Y$, given $Z$ and that they have a join density $p(x,y,z)$. Then
-% \begin{equation}
-%  p(x,y,z)p(z) = p(x,z)p(y,z)
-% \end{equation}
-% Multiply both sides by an arbitrary densities  $g(x),g(y)$ 
-% \begin{equation}
-%  p(x,y,z)p(z)g(x)g(y) = p(x,z)p(y,z)g(x)g(y),
-% \end{equation}
-% so  that the problem can be stated as
-% \[
-%  f_1 f_2 = f_3 f_4
-% \] 
-% for $f_1(x,y,z) =  p(x,y,z)$, etc. .
-% 
-% By Parseval's identity, the mean embedding of the product $f_1f_2$ is 
-% \begin{equation}
-% \label{eq:1}
-%  \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}    k(a-t)  f_2(a)f_1(a) da  = \int_{-\infty}^{\infty} e^{-ist} \varphi_{1,2}(s) \mu_{k}(s) ds 
-% \end{equation}
-% where $\mu_{k}$ is a density -- an inverse Fourier transform of $k$, and $\varphi_{1,2}(s)$ is a characteristic function of the product $f_1 f_2$. This characteristic function is given by a convolution $ \varphi_{1} \ast \varphi_{2}$ where $\varphi_{1}, \varphi_{2}$ are characteristic functions of $f_1$ and $f_2$ respectively (by the convolution property of the Fourier transform). I hoped that calculating the right hand side explicitly will give the  mean embedding of the product $f_1f_2$ as some function of mean embeddings of $f_1,f_2$, but all I get is identity (same expression as on the left hand side). Explicit derivation gives some insight into what is going wrong.
-% 
-% \textbf{Long derivation to get identity}. We start with the right hand side of the equation \ref{eq:1},
-% \begin{align}
-%  &\int_{-\infty}^{\infty} e^{-ist} \varphi_{1,2}(s) \mu_{k}(s) ds = \\
-%  &\int_{-\infty}^{\infty}  e^{-ist} \left(  \int_{-\infty}^{\infty} \varphi_1(p) \varphi_{2}(s-p) dp \right) \mu_{k}(s) ds=\\
-%  &\int_{-\infty}^{\infty} \varphi_1(p) \left(  \int_{-\infty}^{\infty} e^{-ist} \varphi_2(s-p) \mu_{k}(s) ds  \right)  dp.\\ 
-% \end{align}
-% The inner integral looks promising, 
-% \begin{align}
-%   &\int_{-\infty}^{\infty} e^{-ist} \varphi_2(s-p) \mu_{k}(s) ds =\\
-%   &\int_{-\infty}^{\infty} e^{-ist} \left(  \int_{-\infty}^{\infty} e^{i(s-p)a} f_2(a) da  \right) \mu_{k}(s) ds =\\
-%   &\int_{-\infty}^{\infty} e^{-ipa} \left(  \int_{-\infty}^{\infty} e^{is(a-t)} \mu_{k}(s) ds  \right)  f_2(a) da =\\
-%   &\int_{-\infty}^{\infty} e^{-ipa} k(a-t)  f_2(a) da.
-% \end{align}
-% We plug in the inner integral
-% \begin{align}
-%  &\int_{-\infty}^{\infty} \varphi_1(p) \left(  \int_{-\infty}^{\infty} e^{-ist} \varphi_2(s-p) \mu_{k}(s) ds  \right)  dp =\\ 
-%  &\int_{-\infty}^{\infty} \varphi_1(p) \left(  \int_{-\infty}^{\infty} e^{-ipa} k(a-t)  f_2(a) da  \right)  dp =\\ 
-%  &\int_{-\infty}^{\infty}  \left( \int_{-\infty}^{\infty} e^{-ipa} \varphi_1(p)  dp \right)   k(a-t)  f_2(a) da    =\\
-%  &\int_{-\infty}^{\infty}    k(a-t)  f_2(a)f_1(a) da
-% \end{align}
-% 
-% 
-% What we seem to need is some extra density $g(p)$ in the integral $ \left( \int_{-\infty}^{\infty} e^{-ipa} \varphi_1(p)  dp \right)$. Adding an extra Gaussian density with shrinking bandwidth is same as doing kernel density estimation of $f_1$ which is nonsensical.  
-% 
-% \paragraph{Features of the Fourier transform}
-% The aim again is to get rid of convolution. One could treat Fourier transform as densities and calculate e.g. means or higher moments -- this would deconvolve $f_1,f_2$ in the similar way that for $Z=X+Y$, $EZ = EX +EY$. This however leads to integrals of type
-% \[
-%  \int_{-\infty}^{\infty}  e^{itx} t dt 
-% \]
-% which do not exist.
-% 
-
-% 
-% We multiply both side by $\frac{1}{a+iy}\frac{1}{b+ix}$ (for some $a$ and $b$ to be fixed latter) and
-% \begin{equation}
-%  p(x,y,z)p(z)\frac{1}{1+iy}\frac{1}{1+ix} = p(x,z)p(y,z)\frac{1}{1+iy}\frac{1}{1+ix}
-% \end{equation}
-% introduce auxiliary function $f_1,f_2,f_3,f_4$ and restate the above equation
-% \[
-%  f_1 f_2 = f_3 f_4
-% \]
-% We use convolution theorem to calculate the  Fourier  transform of both sides
-% \[
-%  \mathcal{F} f_1 \ast \mathcal{F} f_1  = \mathcal{F} f_3 \ast \mathcal{F} f_4 
-% \]
-% So far so good (this is verified).
-% 
-% Next we apply Laplace transform $\mathcal L$ to get rid of convolution
-% \begin{equation}
-% \label{eq:1}
-% \mathcal{LF} f_1  \mathcal{LF} f_1  = \mathcal{LF}  \mathcal{LF} f_4 
-% \end{equation}
-% By definition
-% \begin{align}
-%  \int_{R^3} e^{-st} (f \ast g)(t) dt = \\
-%  \int_{(R^{+})^3} e^{-st} \left( \int_{R^3} f(x) g(t-x) dx \right)  dt = \\
-%  \int_{(R^{+})^3} f(x) \left( \int_{R^3} e^{-st}   g(t-x) dx \right) dt = \\
-%  \int_{R^3} f(x) \left( \int_{(R^{+})^3} e^{-st}   g(t-x) dt \right) dx = \\
-% \end{align}
-% $p = t-x $, $dp = dt$ ,$t=p+x$
-% \begin{align}
-%  \int_{R^3} f(x) \left( \int_{R^3} e^{-st}   g(t-x) dt \right) dx = \\
-%  \int_{R^3} f(x) \left( \int_{R^3} e^{-s(p+x)}   g(p) dp \right) dx = \\
-%  \int_{R^3}  e^{-sx} f(x) \left( \int_{R^3} e^{-sp }   g(p) dp \right) dx =\\
-%  (\mathcal{L}f)(s) (\mathcal{L}g)(s) 
-% \end{align}
-% 
-% The Laplace transform of the fourier transform simplifies to expected value - for any r.v. $X$
-% \begin{align}
-% \mathcal{LF} f_1 &= \int_{0}^{\infty} e^{-<s,t>} E e^{i<t,X>} dt = E \frac{1}{ \prod_{j=1}^k s_j } \int_{0}^{\infty} \prod_{j=1}^k s_j e^{-<s,t>} e^{i<t,X>} dt =\\
-% &= E \prod_{j=1}^k \frac{1}{s_k-i X_k}
-% \end{align}
-% Therefore for $f_2$, for $a=s_1$ and $b=s_2$ we have 
-% \begin{align}
-%  E \frac{1}{s_3-i Z} \frac{1}{s_1-i X} \frac{1}{s_2-i Y} =\\
-%  E \frac{1}{s_3-i Z} \int \frac{1}{s_1-i x} \frac{1}{s_2-i y} \frac{1}{s_1+i x} \frac{1}{s_2+i y} =\\
-%  E \frac{1}{s_3-i Z} C(s_1) C(s_2)
-% \end{align}
-% where $C(s_1) = \int \frac{1}{(s_1+ x)^2} dx $.
-% Therefore  $\label{eq:1}$ becomes
-% \[
-%  E \frac{1}{(s_3-i Z)(s_1-i X)(s_2-i Y)} E \frac{1}{s_3-i Z}  =   E \frac{1}{(s_3-i Z)(s_1-i X)} E \frac{1}{(s_2-i Y)(s_3-i Z)}
-% \]
-% We set the test statistic
-% \[
-%  S= \sum_{j=1}^n \frac{1}{(s_3-i Z_j)(s_1-i X_j)(s_2-i Y_j)} \sum_{j=1}^n \frac{1}{s_3-i Z_j}  - \sum_{j=1}^n  \frac{1}{(s_3-i Z_j)(s_1-i X_j)} \sum_{j=1}^n \frac{1}{(s_2-i Y_j)(s_3-i Z_j)}
-% \]
-% 
-% 
-% What I did wrong.
-% Density 
-% \[
-%  \frac{1}{z\sqrt{2\pi}}\frac{1}{z\sqrt{2\pi}}\frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2 z^2} -\frac{y^2}{2 z^2} -z^2/2 }
-% \]
-% 
-% 
-% \[
-%  \frac{1}{z \sqrt{2\pi}} \int e^{-\frac{x^2}{2 \sigma^2}} e^{itx} dx = e^{-t^2\sigma^2/2}
-% \]
-% \begin{align}
-%  \frac{1}{\sqrt{2\pi}} \int e^{it_3z} e^{-t_1^2 z^2/2} e^{-t_1^2 z^2/2} e^{-z^2/2} =\frac{1}{\sqrt{2\pi}} \int e^{i t_3 z}e^{-t_1^2 z^2/2-t_2^2 z^2/2 - z^2/2} dz= \\
-%  = \frac{1}{\sqrt{2\pi}}  \int e^{i t_3 z}e^{-(t_1^2+t_2^2 +1)z^2/2} dz = \frac{1}{\sqrt{2\pi}}  \int e^{i t_3 z}e^{-(t_1^2+t_2^2 +1)z^2/2} dz
-% \end{align}
-% we set $\sigma^2 = \frac{1}{ t_1^2+t_2^2 +1}$
-% 
-% \begin{align}
-% \sigma \frac{1}{ \sigma \sqrt{2\pi}}  \int e^{i t_3 z}e^{-z^2/2\sigma^2} dz = \sigma  e^{-t_3^2 \sigma^2} \\
-% =\frac{1}{\sqrt{(t_1^2+t_2^2 +1)} } e^{-t_3^2 \frac{1}{(t_1^2+t_2^2 +1) }}
-% \end{align}
-% 
-% 
-% 
-% \begin{align}
-% \frac{1}{\sqrt{(t_1^2+t_2^2 +1)} } e^{ -s_1t_1-s_2t_2-s_3t_3}e^{ \frac{-t_3^2}{(t_1^2+t_2^2 +1) }}  \\
-% \end{align}
-% 
-% \begin{align}
-% (X-X',Y-Y') = E e^{(X-X',Y-Y')(a,b)} = E e^{(X-X')+ (Y-Y')b} =    
-% \end{align}
-% \[
-%  A,B = P(A>0,B>0) 
-% \]
-% 
-% 
-%  
 
 
 \bibliographystyle{plain}
