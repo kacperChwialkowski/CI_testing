@@ -56,7 +56,7 @@ A parameter  $\theta$ is called estimable of degree $r$, if $r$ is the smallest 
 \cite{bergsma2004testing} introduces a concept of testability which is a 'syntactic sugar' on the concept of estimable parameter.
 
 \begin{definition}[testability, \cite{bergsma2004testing}]
- Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of  estimable parameters which are zero on all elements of $\mathcal{P}$.  $\mathcal{P}$ is testable if and only if $\Theta$ contains only $0$ function.    
+ Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of  estimable parameters which are zero on all elements of $\mathcal{P}$.  $\mathcal{P}$ is non-testable if and only if $\Theta$ contains only $0$ function. Otherwise $\mathcal{P}$ is testable. 
 \end{definition}
 
 
@@ -234,166 +234,166 @@ The last equality is by the assumption that there are no atoms on $X$ axis.
 
 \paragraph{conditional covariance}
 The same argument as above works for the conditional covariance. The family $\mathcal G$ used in the proof of the Theorem \ref{th:1} is a family of densities for which $E(XY|Z)=E(X|Z)E(Y|Z)$. 
-
-\paragraph{Literature overview}
-
-\paragraph{regression like approach}
-This one \cite{song2007testing} requires strong assumptions on conditional  expected values convergence in the Theorem one, I think. \cite{su2008nonparametric} clear form their th 3.1 (use kde as well). same \cite{fukumizu2007kernel,zhang2012kernel}.
-\cite{huang2010testing}.
-
-
-\paragraph{mixing events with sigma fields}
-\cite{gyorfi2012strongly}
-
-
-\cite{linton1996conditional} 'In particular, a smoothing based test would not be able to detect
-alternatives at distance $n^{0.5}$ from the null detected by parametric and
-some nonparametric test statistics.
-Our strategy to avoid this dimensionality problem is to verify the
-relationship (5) over subsets (with positive Lebesgue measure) in the
-support of Y , X , Z rather than at individual values, thereby replacing
-densities with distribution functions. Expression (5) is extended to
-$P (C )P (A,B, C ) = P (A,C )P (B,C )$,
-for all subsets A, B in the support of Y , X , and C a subset in the open
-support of Z.
-
-
-
-\paragraph{Other approach that assumes continuity also partially works}
-
-Following \cite{bergsma2014consistent} we define a discrepancy function
-\begin{equation}
-a(p_1,p_2,p_4,p_4) = |p_1-p_2| -|p_1-p_3|-|p_2-p_4|+|p_4-p_3|.
-\end{equation}
-and 
-\begin{equation}
-\tau = Ea(X_1,X_2,X_3,X_4)a(Y_1,Y_2,Y_3,Y_4).
-\end{equation}
-which is useful in characterizing independence, as seen by 
-\begin{Theorem}[\cite{bergsma2014consistent} ]
-\label{th:tau_star}
-Let $P$ be a distribution on $R^2$, with a density.  $\tau = 0$ if and only if $X_i$ and $Y_i$ independent for  $(X_i,Y_i) \sim P$. 
-\end{Theorem}
-
-We adopt $\tau$ for the conditional independence testing. Given samples $(X_i,Y_i,Z_i)$ we define  $X^{i},Y^{i},Z^{i}$ to be a sequence of observations ordered increasingly by $Z_i$ -- we will call these the order statistics with respect to $Z$ . Let
- \[ 
-\tau_i = sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3})).  
- \]
-We assume that if $Z$ is close to $Z'$ then  distribution $X,Y|Z$ is close to  $X',Y'|Z'$ in some sense; specifically  there exist a number $p$,  random variables  $\bar X'$, $\bar Y'$ such that $P( |X'- \bar X'|>\epsilon,|Y'- \bar Y'|>\epsilon  ) \leq P(|Z-Z'|^p>\epsilon)$ and $\bar X', \bar Y'$ are distributed as $X,Y$. For now we will call such distributions 'p-good'. We will show that, under this assumption, $\tau_i$'s will asymptotically behave like $\tau$.   
-
-We adopt this particular test since it is distribution free, and the test static has easy distribution under the null hypothesis. For example, should we use measure like person correlation, we would have to estimate the conditional variance to calculate the correlation. In contrast, the distribution of $\tau$ has aways constant variance, equal to one, and under the null hypothesis probability of one and minus one are the same.  We start with an auxiliary facts and lemma
-\begin{statement}
-\label{lem:err}
-For any numbers $(z_i,z_i')$, 
-\[
-| a(z_1,z_2,z_4,z_4) -  a(z_1',z_2',z_4',z_4')| \leq 2\sum_{i=1}^4 |z_i-z_i'|
-\]
-\end{statement}
-
-
-\begin{lemma}
-\label{lem:bnd}
-Let $(A_n,B_n,E_n)$ be a sequence of random variables such that  $|A_n-B_n| \leq |E_n|$. For any sequence $\delta_n$
-\[
-\left | E  sgn(A_n) - sgn(B_n) \right | \leq  2P(|E_n|>\delta_n) + 2 P(|E_n| < \delta_n ,|A_n| < \delta_n)
-\]
-\end{lemma} 
-\begin{proof}
-We will bound the difference $E sgn(A_n) - sgn(B_n)$,
-\begin{align}
-E&  sgn(A_n) - sgn(B_n)= \\
-&E \mathbf  1 \{ |E_n| < \delta_n ) , |B_n| > \delta_n \} 0 +\\
-&E \mathbf 1 \{ |E_n| < \delta_n)  , |B_n| < \delta_n\}  (sgn(A_n) - sgn(B_n)) + \\
-&E \mathbf 1 \{ |E_n| > \delta_n  \}  (sgn(A_n) - sgn(B_n)).  
- \end{align}
-The last two terms can be bounded
- \begin{align}
-&   |E\mathbf 1 \{ |E_n| > \delta_n   \}  sgn(A_n) - sgn(B_n)| \leq 2 P( |E_n|>\delta_n) , \\
-&   |E \mathbf 1 \{ |E_n| < \delta_n   , |B_n| < \delta  \}  sgn(A_n) - sgn(B_n) | \leq 2 P(|E_n| < \delta_n ,|A_n| < \delta_n) . 
-\end{align}
-\end{proof}
-
-
-
-
-\begin{statement}
-\label{lemma:keyLemma}
- for any real numbers $a,b,c,d$, 
- \[
-  2(ab -cd) = (a-c)(b+d) + (a+c)(b-d). 
- \]
-\end{statement}
-
-% \begin{definition}
-% Let  $X_i,Y_i,Z_i$ be a sequence such that $P( |X_i-X_j|>\epsilon,|Y_i-Y_j|>\epsilon  ) \leq P(|Z_i-Z_j|^p>\epsilon)$. 
-% Let $W^{i},Z^{i}$ be order statistics by $Z$. We call them p-good if for any $i$ there exist a sequence of independent random variables $\bar W^i$ such that 
-% for any $i$, and $j \in {0,1,2,3}$
+% 
+% \paragraph{Literature overview}
+% 
+% \paragraph{regression like approach}
+% This one \cite{song2007testing} requires strong assumptions on conditional  expected values convergence in the Theorem one, I think. \cite{su2008nonparametric} clear form their th 3.1 (use kde as well). same \cite{fukumizu2007kernel,zhang2012kernel}.
+% \cite{huang2010testing}.
+% 
+% 
+% \paragraph{mixing events with sigma fields}
+% \cite{gyorfi2012strongly}
+% 
+% 
+% \cite{linton1996conditional} 'In particular, a smoothing based test would not be able to detect
+% alternatives at distance $n^{0.5}$ from the null detected by parametric and
+% some nonparametric test statistics.
+% Our strategy to avoid this dimensionality problem is to verify the
+% relationship (5) over subsets (with positive Lebesgue measure) in the
+% support of Y , X , Z rather than at individual values, thereby replacing
+% densities with distribution functions. Expression (5) is extended to
+% $P (C )P (A,B, C ) = P (A,C )P (B,C )$,
+% for all subsets A, B in the support of Y , X , and C a subset in the open
+% support of Z.
+% 
+% 
+% 
+% \paragraph{Other approach that assumes continuity also partially works}
+% 
+% Following \cite{bergsma2014consistent} we define a discrepancy function
+% \begin{equation}
+% a(p_1,p_2,p_4,p_4) = |p_1-p_2| -|p_1-p_3|-|p_2-p_4|+|p_4-p_3|.
+% \end{equation}
+% and 
+% \begin{equation}
+% \tau = Ea(X_1,X_2,X_3,X_4)a(Y_1,Y_2,Y_3,Y_4).
+% \end{equation}
+% which is useful in characterizing independence, as seen by 
+% \begin{Theorem}[\cite{bergsma2014consistent} ]
+% \label{th:tau_star}
+% Let $P$ be a distribution on $R^2$, with a density.  $\tau = 0$ if and only if $X_i$ and $Y_i$ independent for  $(X_i,Y_i) \sim P$. 
+% \end{Theorem}
+% 
+% We adopt $\tau$ for the conditional independence testing. Given samples $(X_i,Y_i,Z_i)$ we define  $X^{i},Y^{i},Z^{i}$ to be a sequence of observations ordered increasingly by $Z_i$ -- we will call these the order statistics with respect to $Z$ . Let
+%  \[ 
+% \tau_i = sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3})).  
+%  \]
+% We assume that if $Z$ is close to $Z'$ then  distribution $X,Y|Z$ is close to  $X',Y'|Z'$ in some sense; specifically  there exist a number $p$,  random variables  $\bar X'$, $\bar Y'$ such that $P( |X'- \bar X'|>\epsilon,|Y'- \bar Y'|>\epsilon  ) \leq P(|Z-Z'|^p>\epsilon)$ and $\bar X', \bar Y'$ are distributed as $X,Y$. For now we will call such distributions 'p-good'. We will show that, under this assumption, $\tau_i$'s will asymptotically behave like $\tau$.   
+% 
+% We adopt this particular test since it is distribution free, and the test static has easy distribution under the null hypothesis. For example, should we use measure like person correlation, we would have to estimate the conditional variance to calculate the correlation. In contrast, the distribution of $\tau$ has aways constant variance, equal to one, and under the null hypothesis probability of one and minus one are the same.  We start with an auxiliary facts and lemma
+% \begin{statement}
+% \label{lem:err}
+% For any numbers $(z_i,z_i')$, 
 % \[
-%  P( |\bar W^{i+j} - W^{i+j}| > a) \leq P( |Z^{i} - Z^{i+j}|^p >a),
+% | a(z_1,z_2,z_4,z_4) -  a(z_1',z_2',z_4',z_4')| \leq 2\sum_{i=1}^4 |z_i-z_i'|
 % \]
-% ,$\bar W^{i+j}$ is distributed as $W^{i}$. 
-% \end{definition}
-
-\begin{Theorem}
-If $X_i,Y_i,Z_i$ is are 'p-good' and $P( |X| <t) <Ct$, $P( |Y| <t) <Ct$ for small $t$ and $Z$ is uniform over $[0,1]$, then
-\[
- \frac{1}{\sqrt n} \sum_{j=0;j=+4;n} \tau_j   
-\]
-converges to standard normal distribution  if and only iff  $X_i,Y_i,Z_i$ are conditionally independent.
-\end{Theorem}
-\begin{proof}
-Since $Var(\tau_j)=1$, the sum 
-\[
- \frac{1}{\sqrt {n/4}} \sum_{i=0;i=+4;n} (\tau_i - E \tau_i)   
-\]
-converges to standard  normal distribution. It is sufficient to prove that $\frac{1} {\sqrt n} \sum_{i}^{n} E \tau_i=0$ converges to zero if and only if  null hypothesis holds. For any  $i=4k$, where $k$ is natural, and $j \in {0,1,2,3}$ let $\bar X_{i+j}$ and $\bar Y_{i+j}$ be independent random variables provided by the 'p-good' assumption i.e. 
-\[
- P( |X^{i+j}- \bar X^{i+j}|>\epsilon,|Y^{i+j}- \bar Y^{i+j}|>\epsilon  ) \leq P(|Z^i-Z^{i+j}|^p>\epsilon),
-\]
-and $\bar X^{i+j},\bar Y^{i+j}$ are distributed as $X^i,Y^i$. 
-%%TODO give a better definition above to make sure all is independent.
-
-Define 
-\[
- \bar \tau_j = sgn(a(\bar X^{j},\bar X^{j+1},\bar X^{j+2}, \bar X^{j+3})) sgn(a(\bar Y^{j},\bar Y^{j+1},\bar Y^{j+2},\bar Y^{j+3}))
-\]
-By \ref{th:tau_star} $E \bar \tau_j=0$ if and only if  $\bar X_i , \bar Y_i$ are independent. Therefore, under the null hypothesis it is sufficient to show  that $ E (\bar \tau_j - \tau_j) = O(1/ \sqrt n)$. Indeed, 
-\[
- \frac{1} {\sqrt n} \sum_{i}^{n} E (\tau_i - \bar \tau_j +\bar \tau_j) = \frac{1} {\sqrt n} \sum_{i}^{n} O(1/ \sqrt n) +0 \to 0.
-\]
-By the observation \ref{lemma:keyLemma} we see it is sufficient to prove that  
-\begin{align}
-   E sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) - sgn(a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3})) \to a_i  \\
-  \sqrt n  E sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3})) - sgn(a(\bar Y^{i},\bar Y^{i+1},\bar Y^{i+2}, \bar Y^{i+3})) \to a_i
-\end{align}
-Without loss of generality we can consider only $X$'s. Let $A_n = a(X^{i},X^{i+1},X^{i+2},X^{i+3})$, $B_n = a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3})$ . By the lemma \ref{lem:err} $ A_n-B_n \leq E_n = 2 \sum_{j=0}^3 |X_{i+j}-\bar X_{j+i}|$. By the lemma  \ref{lem:bnd} it is enough to show that  $P( E_n > \delta_n ) = O(1/ \sqrt n)$ and $P( |B_n| < \delta_n )=O(1/ \sqrt n)$ for some  $\delta_n$. We choose $\delta_n = \frac{C} {n}$. For $B_n$ we have 
-\[
- P( |B_n| < \frac{1}{\sqrt n} ) \leq \frac{C}{\sqrt n}. 
-\]
-By p-good assumption
-\begin{align}
- P(|E_i| > \frac{1}{\sqrt n} ) = P( 2 \sum_{j=0}^3 |X_{i+j}-\bar X_{j+i}| > \frac{1}{\sqrt n} ) \leq \\
- P( 8|Z^i - Z^{i+4}|^p > \frac{1}{\sqrt n} )   =  P(  8|Z^i - Z^{i+4}| > n^{-1/2p} ).
-\end{align}
-By (reference)  $D_{n,i} = |Z^i - Z^{i+4}|$ is distributed as $Beta(4,n-3)$.  One can show that for $p>0.5$ prove
-\[
- \sqrt n P( n D_{n,i} > n^{-1/2p+1}) \to 0 
-\]
-Simple way to see it is true is to  notice that $n D(n,i)$ coverages to gamma(k,1) and we need $-1/2p+1 >0 $ so $n^{-1/2p+1}$ grows (any polynomial growth is OK since gamma has heavy tail).  $-1/2p+1 >0$ is equivalent to $p>0.5$. This is not proof since we used limit twice.
-\end{proof}
-
-How to construct $\bar X^{i+j}$ ? We set $\bar X^{i+j} =  F^i(F^{i+j}(X^{i+j})}$. Let 
-\[
- P( |\bar X^{i+j} -X^{i+j}  |>a) = P( |F^i(F^{i+j}(X^{i+j}) -X^{i+j}  |>a) 
-\]
-clearly we need to make some assumptions  of $F$, for example of the following should do:  if $|z-z'| \leq a $
-\[
- |x-x'| 
-\]
-
-
-
-
+% \end{statement}
+% 
+% 
+% \begin{lemma}
+% \label{lem:bnd}
+% Let $(A_n,B_n,E_n)$ be a sequence of random variables such that  $|A_n-B_n| \leq |E_n|$. For any sequence $\delta_n$
+% \[
+% \left | E  sgn(A_n) - sgn(B_n) \right | \leq  2P(|E_n|>\delta_n) + 2 P(|E_n| < \delta_n ,|A_n| < \delta_n)
+% \]
+% \end{lemma} 
+% \begin{proof}
+% We will bound the difference $E sgn(A_n) - sgn(B_n)$,
+% \begin{align}
+% E&  sgn(A_n) - sgn(B_n)= \\
+% &E \mathbf  1 \{ |E_n| < \delta_n ) , |B_n| > \delta_n \} 0 +\\
+% &E \mathbf 1 \{ |E_n| < \delta_n)  , |B_n| < \delta_n\}  (sgn(A_n) - sgn(B_n)) + \\
+% &E \mathbf 1 \{ |E_n| > \delta_n  \}  (sgn(A_n) - sgn(B_n)).  
+%  \end{align}
+% The last two terms can be bounded
+%  \begin{align}
+% &   |E\mathbf 1 \{ |E_n| > \delta_n   \}  sgn(A_n) - sgn(B_n)| \leq 2 P( |E_n|>\delta_n) , \\
+% &   |E \mathbf 1 \{ |E_n| < \delta_n   , |B_n| < \delta  \}  sgn(A_n) - sgn(B_n) | \leq 2 P(|E_n| < \delta_n ,|A_n| < \delta_n) . 
+% \end{align}
+% \end{proof}
+% 
+% 
+% 
+% 
+% \begin{statement}
+% \label{lemma:keyLemma}
+%  for any real numbers $a,b,c,d$, 
+%  \[
+%   2(ab -cd) = (a-c)(b+d) + (a+c)(b-d). 
+%  \]
+% \end{statement}
+% 
+% % \begin{definition}
+% % Let  $X_i,Y_i,Z_i$ be a sequence such that $P( |X_i-X_j|>\epsilon,|Y_i-Y_j|>\epsilon  ) \leq P(|Z_i-Z_j|^p>\epsilon)$. 
+% % Let $W^{i},Z^{i}$ be order statistics by $Z$. We call them p-good if for any $i$ there exist a sequence of independent random variables $\bar W^i$ such that 
+% % for any $i$, and $j \in {0,1,2,3}$
+% % \[
+% %  P( |\bar W^{i+j} - W^{i+j}| > a) \leq P( |Z^{i} - Z^{i+j}|^p >a),
+% % \]
+% % ,$\bar W^{i+j}$ is distributed as $W^{i}$. 
+% % \end{definition}
+% 
+% \begin{Theorem}
+% If $X_i,Y_i,Z_i$ is are 'p-good' and $P( |X| <t) <Ct$, $P( |Y| <t) <Ct$ for small $t$ and $Z$ is uniform over $[0,1]$, then
+% \[
+%  \frac{1}{\sqrt n} \sum_{j=0;j=+4;n} \tau_j   
+% \]
+% converges to standard normal distribution  if and only iff  $X_i,Y_i,Z_i$ are conditionally independent.
+% \end{Theorem}
+% \begin{proof}
+% Since $Var(\tau_j)=1$, the sum 
+% \[
+%  \frac{1}{\sqrt {n/4}} \sum_{i=0;i=+4;n} (\tau_i - E \tau_i)   
+% \]
+% converges to standard  normal distribution. It is sufficient to prove that $\frac{1} {\sqrt n} \sum_{i}^{n} E \tau_i=0$ converges to zero if and only if  null hypothesis holds. For any  $i=4k$, where $k$ is natural, and $j \in {0,1,2,3}$ let $\bar X_{i+j}$ and $\bar Y_{i+j}$ be independent random variables provided by the 'p-good' assumption i.e. 
+% \[
+%  P( |X^{i+j}- \bar X^{i+j}|>\epsilon,|Y^{i+j}- \bar Y^{i+j}|>\epsilon  ) \leq P(|Z^i-Z^{i+j}|^p>\epsilon),
+% \]
+% and $\bar X^{i+j},\bar Y^{i+j}$ are distributed as $X^i,Y^i$. 
+% %%TODO give a better definition above to make sure all is independent.
+% 
+% Define 
+% \[
+%  \bar \tau_j = sgn(a(\bar X^{j},\bar X^{j+1},\bar X^{j+2}, \bar X^{j+3})) sgn(a(\bar Y^{j},\bar Y^{j+1},\bar Y^{j+2},\bar Y^{j+3}))
+% \]
+% By \ref{th:tau_star} $E \bar \tau_j=0$ if and only if  $\bar X_i , \bar Y_i$ are independent. Therefore, under the null hypothesis it is sufficient to show  that $ E (\bar \tau_j - \tau_j) = O(1/ \sqrt n)$. Indeed, 
+% \[
+%  \frac{1} {\sqrt n} \sum_{i}^{n} E (\tau_i - \bar \tau_j +\bar \tau_j) = \frac{1} {\sqrt n} \sum_{i}^{n} O(1/ \sqrt n) +0 \to 0.
+% \]
+% By the observation \ref{lemma:keyLemma} we see it is sufficient to prove that  
+% \begin{align}
+%    E sgn(a(X^{i},X^{i+1},X^{i+2},X^{i+3})) - sgn(a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3})) \to a_i  \\
+%   \sqrt n  E sgn(a(Y^{i},Y^{i+1},Y^{i+2},Y^{i+3})) - sgn(a(\bar Y^{i},\bar Y^{i+1},\bar Y^{i+2}, \bar Y^{i+3})) \to a_i
+% \end{align}
+% Without loss of generality we can consider only $X$'s. Let $A_n = a(X^{i},X^{i+1},X^{i+2},X^{i+3})$, $B_n = a(\bar X^{i},\bar X^{i+1},\bar X^{i+2}, \bar X^{i+3})$ . By the lemma \ref{lem:err} $ A_n-B_n \leq E_n = 2 \sum_{j=0}^3 |X_{i+j}-\bar X_{j+i}|$. By the lemma  \ref{lem:bnd} it is enough to show that  $P( E_n > \delta_n ) = O(1/ \sqrt n)$ and $P( |B_n| < \delta_n )=O(1/ \sqrt n)$ for some  $\delta_n$. We choose $\delta_n = \frac{C} {n}$. For $B_n$ we have 
+% \[
+%  P( |B_n| < \frac{1}{\sqrt n} ) \leq \frac{C}{\sqrt n}. 
+% \]
+% By p-good assumption
+% \begin{align}
+%  P(|E_i| > \frac{1}{\sqrt n} ) = P( 2 \sum_{j=0}^3 |X_{i+j}-\bar X_{j+i}| > \frac{1}{\sqrt n} ) \leq \\
+%  P( 8|Z^i - Z^{i+4}|^p > \frac{1}{\sqrt n} )   =  P(  8|Z^i - Z^{i+4}| > n^{-1/2p} ).
+% \end{align}
+% By (reference)  $D_{n,i} = |Z^i - Z^{i+4}|$ is distributed as $Beta(4,n-3)$.  One can show that for $p>0.5$ prove
+% \[
+%  \sqrt n P( n D_{n,i} > n^{-1/2p+1}) \to 0 
+% \]
+% Simple way to see it is true is to  notice that $n D(n,i)$ coverages to gamma(k,1) and we need $-1/2p+1 >0 $ so $n^{-1/2p+1}$ grows (any polynomial growth is OK since gamma has heavy tail).  $-1/2p+1 >0$ is equivalent to $p>0.5$. This is not proof since we used limit twice.
+% \end{proof}
+% 
+% How to construct $\bar X^{i+j}$ ? We set $\bar X^{i+j} =  F^i(F^{i+j}(X^{i+j})$. Let 
+% \[
+%  P( |\bar X^{i+j} -X^{i+j}  |>a) = P( |F^i(F^{i+j}(X^{i+j}) -X^{i+j}  |>a) 
+% \]
+% clearly we need to make some assumptions  of $F$, for example of the following should do:  if $|z-z'| \leq a $
+% \[
+%  |x-x'| 
+% \]
+% 
+% 
+% 
+% 
 
 
 
