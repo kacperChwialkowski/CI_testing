@@ -231,6 +231,95 @@ P( (x_1 , y_1 , z_1 ), \cdots , (x_r , y_r , z_r ) ) \leq  P(x_1,\cdots,x_n) =0
 \]
 The last equality is by the assumption that there are no atoms on $X$ axis.
 
+\paragraph{No tests for CI}
+
+Let   $\mathbf X = (X_1,\cdots, X_n)$ be a sequence of iid random variables; for a measure $p$ we will write $\mathbf X \sim p$ to indicate that each $X_i$ is distributed according to  $P$.  Null and alternative hypothesis are a two, disjoint sets of probability measures, $\mathcal{P}$ and $\mathcal{Q}$ respectively. Here we assume that the alternative hypothesis is complement of the null hypothesis,  $\mathcal Q = \mathcal{P}^c$.  A statistical test is a measurable, symmetric function form  $\mathbf X$ to $\{0,1\}$. We say that the test $\psi$ accepts a null hypothesis if $\psi(\mathbf X)=0$, otherwise we say that test rejects of the null hypothesis. 
+
+For a statistical test $\psi$, type one error is probability that the test reject the null hypothesis 
+\[
+ H(\mathcal{P}) =  \sup_{\mathbf{X} \sim p \in \mathcal{P} }   P( \psi(\mathbf X) =1 )
+\]
+and maximal power of the test is 
+\[
+H(\mathcal{Q}) \sup_{p \in \mathcal{Q} }   p( \psi(\mathbf X) =1 ).
+\]
+ Type one error and maximal power is just $H$  calculated on two different sets,  $\mathcal{P}$ and $\mathcal{Q}$. The minimal requirement for a statistical test is that for any fixed level $\alpha$, $H(\mathcal{P}) \leq \alpha$ and $H(\mathcal{P}^c) > \alpha$, which amounts to saying that type one error is controlled on the level alpha and there exists an distribution form the alternative for which test power is large. If a statistical test satisfies this condition, we say its minimal. 
+
+\begin{statement}
+If $\psi$ is $\alpha$ minimal test, then there exist a measurable, bounded, symmetric function $h: R^{3n} \to R$ such that for all $p \in \mathcal{P}$ 
+\[
+ \int_{R^{3n}} h(x) dp(x)  \leq 0
+\]
+\end{statement}
+
+\begin{proof}
+ Put $h(x) = 1_\{ \psi(x) =1 \} - \alpha$. 
+ \[
+  \int_{R^{3n}} h(x) dp(x) = p( \psi(x) =1) - \alpha \leq 0.
+ \]
+$h$ is symmetric since $\psi$ is symmetric. 
+\end{proof}
+
+
+
+defined on  $R^{3n}$, where each $X_i$ is a three-dimensional real valued random vector. This notation is useful for talking about conditional independence - each $X_i$ is a triple of random variables $(X_{i,1},X_{i,2},X_{i,3}$ such that $X_{i,1}$ is conditionally independent of $X_{i,2}$ given $X_{i,3}$.
+
+
+The minimal requirement for a test is that type one error is controlled at some level $\alpha$ while there exist a distribution form the alternative for which type two error is small. we call such a test a minimal test.  Let $\mathcal P$ be a family of distributions on $R^3$, with densities, that are conditionally independent. If there exists the minimal test for conditional independence then there exist a measurable, symmetric function $h$ such that for all $X_i \sim P$, where $P \in \mathcal P$
+\[
+ E h(X_1, \cdots , X_n) \leq 0.
+\]
+$h$ is given by $1_\{ \psi(X_1, \cdots, X_n) =1 \} - \alpha$.  
+
+Let $E$ be a space of signed measures, supported on a hypercube centered at zero, with bounded densities. $E$ is a real vector space (with operations defined on densities). Let $F$ be a span of $\mathcal P \cup E$. Let $K$ be set of positive measures in $V$. $K$ is a convex cone in $V$, since $K$ is closed under linear combinations with positive coefficients.
+
+It is sufficient to show that there is no minimal test for conditional independence for probability measures form $K$. 
+
+
+
+\begin{Theorem}
+ Let $h$ be a measurable, symmetric function such that for $p \in \mathcal P$ 
+ \[
+ E h(X_1, \cdots , X_n) \leq 0.
+\]
+where $X_i$ are iid from $p$. For all $q \in K$
+\[
+ E h(X_1, \cdots , X_n) \leq 0.
+\]
+where $X_i$ are iid from $q$
+\end{Theorem}
+
+\begin{proof}
+ 
+ For any signed measure  $p$ we define linear map $\phi$
+ \[
+  \phi(p) =  E h(X_1, \cdots , X_n)
+ \]
+where $X_i \sim p$ are iid random variables. If $p \in F \cup K$ then, by assumption, 
+\[
+  \phi(p) \leq 0.
+\]
+$F$ contains uniform distribution over the hypercube -- we will denote it as $u$. Any element  $e \in E$ can be expressed as a sum of $x \in K$ and $\alpha u$ for real alpha; this follows from the fact that elements  $ e \in E$ are bounded and therefore can be shifted by $\alpha u$ so that $e + \alpha u$ are positive. We are in position to use Riesz extension theorem and extend $\phi$ to $\psi$ defined the whole cone $K$, such that 
+\[
+ \phi |_{F} = \psi \text{ and } \psi(p) \leq 0 \text{ for} p \in K.
+\]
+We will now show that this extension is unique. Suppose there exist some other function $\kappa$ such that $\kappa |_{F} = \psi$ and $\kappa$ is given by an integral of some symmetric function $h'$
+ \[
+  \kappa(p) =  E h'(X_1, \cdots , X_n).
+ \]
+Then $\kappa - \psi |_{\mathcal{P}} = 0$ and $\kappa - \psi$ is given by a integral with respect to a symmetric function. By Theorem \ref{th:1} $g$ must be equal to zero everywhere and so $\kappa =0$.   
+\end{proof}
+
+We have shown that for if there exist $\psi$ such that 
+$$P(\psi(X_1,\cdots, X_n) = 1) \leq \alpha$$,
+for all $p \in \mathcal{P}$ then 
+\[
+ P(\psi(X_1,\cdots, X_n) = 1) \leq \alpha
+\]
+for all $p \in K$, so there exist no distribution for which type two error is small.  
+
+
+
 % 
 % \paragraph{conditional covariance}
 % The same argument as above works for the conditional covariance. The family $\mathcal G$ used in the proof of the Theorem \ref{th:1} is a family of densities for which $E(XY|Z)=E(X|Z)E(Y|Z)$. 
