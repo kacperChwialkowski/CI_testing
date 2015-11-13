@@ -72,6 +72,10 @@ Consider restriction of the polynomial on the $R^m$ space  the affine space $\su
 \end{proof}
 
 
+
+\paragraph{alternative formulation for $L_1$}
+
+
 \begin{lemma}
 \label{the:Lemma}
 Let $h: R^r \to R$ be a bounded function, symmetric in its arguments, i.e. for any permutation $\pi$ of set $(1,\cdots,r)$,
@@ -80,129 +84,68 @@ h(x_{\pi(1)},\cdots,x_{\pi(1)}) = h(x_1,\cdots,x_r).
 $$
 If for any sequence of iid random variables $(Z_1,\cdots,Z_r)$ the expected value of $h$ is zero, i.e.
 $$
-E h(Z_1,\cdots,Z_r) = 0,
+\int h(z_1,\cdots,z_r) \prod_{i=1}^n p_i(z_i) d z_i = 0,
 $$
 then $h$ is equal to zero.
 \end{lemma}
 
-
-
 \begin{proof}
-Assume to the contrary that there exists a function $h$ and the set of a positive measure $A$, such that $\int_{A} h^2 > \epsilon^2$ and   
-$$
-E h(Z_1,\cdots,Z_r) = 0,
-$$
-for all id random variables $(Z_1,\cdots,Z_r)$.
-
-\textbf{Outline.} We first construct a function $g$ that  approximates function $h$ on some hypercube $C$ contained in  the set $A$.  $\epsilon$-close approximation ($\| h-g\|_{L_2(C)} \leq \epsilon^2$) will be piecewise constant on small  $r$-dimensional hypercubes; additionally, for a specific family of random variables $\mathcal{F}$, the property $E g(Z_1,\cdots,Z_r)=0, Z \in \mathcal{F}$ will hold. Next we will show that $g=0$ and conclude that $\| h\|_{L_2(C)}\leq \epsilon$. The contradiction comes from the fact that $\| h\|_{L_2(C)}\leq \epsilon$ but by the assumption $\int_{A} h^2 > \epsilon^2$.  
-
-Let $C=[-a,a]^r$ be a hypercube that contains the set $A$. For an interval $[-a,a]$ and some integer $m>0$, let $x_i = a(-1 + \frac{2i}{m})$, for $0 \leq i \leq m$, be a sequence of points that divide the interval $[-a,a]$ into subintervals of an equal length $\frac{2}{m}$. Since $h$ is bounded, there exists $M$ such that for all $m>M$, $h$ can be approximated using step functions on the sub-hypercubes of the hypercube $C$ with the grid defined by the sequence $x_i$. The vertices of the sub-hypercubes are $r$ dimensional points in the set  $\{ (x_{i_1},x_{i_1+1}) \times \cdot \times (x_{i_r},x_{i_r+1})\}$ for a sequence of the indexes $0 \leq i_1, \cdots, i_r\leq m$. By construction, the approximation of function  $h$,  function $g$, is $\epsilon$ close to $h$ in squared norm, that is
+ Take $f(z) = \sum_{i=1}^{r} \alpha_{i} f(z)$ and plug it to integral. The result is polynomial in $\alpha$'s which coefficients are given by
  \[
-  \int_{C} \left( h(z_i,\cdot,z_r) -g(z_i,\cdot,z_r) \right)^2 d z_1 \cdots d z_r \leq \epsilon^2.
+  \beta_{i_1,...,i_r} = \int \alpha_{i_1} p_{i_1} \cdots \alpha_{i_r} p_{i_r} h(z_1,\cdots,z_r)
  \]
+Note that $\beta$ is invariant to permutation of indexes $i_1,...,i_r$. Also all $\beta$'s are equal to zero since the polynomial is equal to zero. 
+Consider coefficient $b_{1,\cdots, n} = 0$, and put $p_i = 1{[a_i,b_i]} $
+\begin{align}
+ \int \alpha_{1} p_{1}(z_1) ...\alpha_{r} p_{r}(z_r) p(z_r)\cdots \alpha_{i_r} h(z_1,\cdots,z_r) =\
+ \alpha_{1}  ...\alpha_{r}  \int_{a_1}^{b_1} \cdots  \int_{a_r}^{b_r}  h(z_1,\cdots,z_r) 
+\end{align}
+
+Which means that $h$ is zero.
  
- 
-Let us define a family of functions $\{e_i\}_{0\leq i \leq m}$, constant on the intervals $[x_i,x_{i+1}]$
-\[
-e_i(z) = 1_{z \in [x_i,x_{i+1}]} \sqrt{\frac{m}{2}}.
-\]
-Let $\mathcal H$ be a space of functions spanned by linear combinations of $e_i$, that is  $f = \sum_{i=1}^{m} \alpha_i e_i$ for some sequence $\alpha_m$. This space, being isometrically isomorphic to $m$-dimensional Euclidean space,  is endowed with an the inner product 
-\[
-\langle e_i,e_j \rangle_{\mathcal H} = \delta_{i,j}.
-\]
-This inner product coincides with the inner product on the space of square integrable functions on the interval $[-a,a]$, 
-\begin{align}
-\langle e_i,e_i \rangle_{L_2} &= \int_{-a}^{a} e_i(x) e_i(x) = \frac{2}{m} \sqrt{\frac m 2}^2 =1,  \\ 
-\langle e_i,e_j \rangle_{L_2} &= \int_{-a}^{a} e_i(x) e_j(x) = 0. 
-\end{align}
-Consequently, for any two functions $f_1,f_2$ in $\mathcal{H}$, we have 
-\[
-\langle f_1,f_2 \rangle_{L_2} =  \langle f_1,f_2 \rangle_{\mathcal{H}}.
-\]
-Formally speaking, $f \in \mathcal{H}$ is not the same as $f \in \mathcal L_2$, but we will not  introduce extra notation and additionally  we will drop subscripts in the inner products. 
-
-Let $\mathcal H^r$ be a space of function spanned by basis $e_{i_1}(z_1) \cdots  e_{i_r}(z_r)$ for for $0\leq i_1,\cdots,i_r\leq m$. Similarly to $\mathcal{H}$, $\mathcal H^r$ is  isometrically isomorphic to  the $r \times m$ dimensional Euclidean space, and its inner product coincides with an inner product on the $L_2(C)$ space. 
-
-Using basis $e_{i_1}(z_1) \cdots  e_{i_r}(z_r)$,  we construct the best (with respect to squared norm) piecewise  constant  approximation of $h$.  The best constant approximation of a function, over some set, is its mean. For any small hypercube $S =  \{ (x_{i_1},x_{i_1+1}) \times \cdot \times (x_{i_r},x_{i_r+1})\}$ we set $g$ to a mean value of $h$ over this hypercube; formally we set coefficients $\beta_{i_1,\cdots,i_r}$ to normalized mean value and use them to define $g$
-\[
-\beta_{i_1,\cdots,i_r} = \frac{ \int_{S} h(z_{i_1},\cdots,z_{i_r} ) dz_1 \cdots dz_r} { (2/m)^r} 
-\]
-\[
- g(z_1,\cdots z_r)= \sum_{i_i=1}^m \cdots \sum_{i_r=1}^m \beta_{i_1,\cdots,i_r} e_{i_1}(z_1) \cdots  e_{i_r}(z_r).
-\]
-By the mean property, for any $C$
-\begin{align}
-\int_{S} C h(z_{i_1},\cdots,z_{i_r} ) dz_1 \cdots dz_r= \int_{S} C g(z_{i_1},\cdots,z_{i_r} ) dz_1 \cdots dz_r.
-\end{align}
-Therefore any piecewise constant function $f \in \mathcal{H}^r$ 
-\begin{align}
-\int_{C}& h(z_{i_1},\cdots,z_{i_r}) f(z_{i_1},\cdots,z_{i_r}) dz_1 \cdots dz_r = \\
-\int_{C}& g(z_{i_1},\cdots,z_{i_r}) f(z_{i_1},\cdots,z_{i_r})dz_1 \cdots dz_r=\\
-&0, 
-\end{align}
-which, as outlined above, implies $\langle h,f \rangle = \langle g,f \rangle =0$. 
-
-
-Since $h$ is symmetric, $g$ is also symmetric, and therefore values of coefficients $\beta_{i_1,\cdots,i_r}$ are constant under permutations,  
-\[
- \beta_{i_1,\cdots,i_r} = \beta_{\pi(i_1,\cdots,i_r)},
-\]
-where $\pi$ is permutation of $r$ elements. 
-
-Consider the family of density functions  $\mathcal F \subset \mathcal H^r$, such that  
-\[
-f(z_1,\cdots,z_r)= (\sum_{i=1}^{m} \alpha_i e_i(z_1)) \cdots (\sum_{i=1}^{m} \alpha_i e_i(z_r)),
-\]
-$\alpha_i \geq 0$ and $\sum_{i=1}^m \alpha_i=1$. Since $\mathcal F \subset \mathcal H^r$, for all random variable $Z$ with density  $f \in \mathcal{F}$ we have $E g(Z_1,\cdots ,Z_r) = \langle g, f \rangle =0$. The inner product $\langle g, f \rangle$ allows explicit representation  
-\begin{align}
-\label{eq:fatality}
-\langle g, f \rangle = \sum_{i_1=1}^{m} \cdots  \sum_{i_r=1}^{m} \beta_{i_1,\cdots, i_r} \alpha_{i_1} \cdots \alpha_{i_r}.
-\end{align}
-The above equation \eqref{eq:fatality} is a polynomial of $m$ variables $\alpha_{1},\cdots,\alpha_{m}$. Since $\beta_{i_1,\cdots, i_r}$ are symmetric under permutations, the coefficients of this polynomial are non-zero if and only if $\beta_{i_1,\cdots, i_r}$ are non-zero. By assumption on $\alpha$'s ( $\alpha_i \geq 0$, and $\sum_{i=1}^m \alpha_i=1$) and the assumption $\langle g, f \rangle =0$, this polynomial is zero on the m-dimensional simplex. By Lemma \ref{lem:aha} the only such polynomials is $\beta_{i_1, \cdots ,i_r}'=0$ -- it can not be a polynomial $\sum \alpha_i=1$, since the polynomial \eqref{eq:fatality} does not have a constant term. 
 \end{proof}
-
 
 
 
 
 \begin{Theorem}
 \label{th:1}
- Suppose that the random vector $X,Y,Z$ has a density $p$ and $Z$ has no atoms. The property of conditional independence $p(x,y|z) = p(x|z)p(y|z)$ is not testable of any order. 
+Let $\mathcal P = \{ p(x,y,z) \in L_1(R^3) | p(x,y,z)p(z) = p(x,z)p(y,z) \}$. If $f : R^{3n} \to R$ is such that 
+\[
+ \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i = 0
+\]
+on $p \in \mathcal P$, then $h=0$ almost everywhere.
 \end{Theorem}
 
 \begin{proof}
-Assume to the contrary that there exist $h$ such that 
-$$
-E h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r) =0 $$ 
-if and only if conditional independence holds. By the assumption  
+Assume to the contrary that such an $h$ exists. By the Fubini thorem  
 \begin{align}
- E& h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r) = \\
- E& \left( E h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r | Z_1,\cdots,Z_r) \right) = \\
- \int& \left(\int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i|z_i)p(y_i|z_i) dx_i dy_i  \right)  \prod_{i=1}^r p(z_i)dz_i
+ \int& \left(\int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i  \right)  \prod_{i=1}^r p(z_i)dz_i
+\end{align}
+Let $\mathcal I = \{ p'(x,y,z) \in \mathcal P | p(x,z)/p(z) = p'(x,z)/p'(z) \text{ and }(y,z)/p(z) = p'(y,z)/p'(z)$. For any $g \in L_1(R)$ there exists $p' \in I$ such that $\int p'(x,y,z) dx dz = f(z)$. We put $p' = p(x,z)p(y,z)/p(z)^2 f(z)$. We check 
+\begin{align}
+ p'(x,z) = p(x,z)/p(z) f(z)
+ p'(y,z) = p(y,z)/p(z) f(z)
+ p'(z) = f(z)
 \end{align}
 
-Denote $g_{\mu}( Z_1,\cdots,Z_r) = E h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r | Z_1,\cdots,Z_r)$. We write $\mu$ to remember that $g$ depends on $p(x|z)p(y|z)$. We show that $g_{\mu}$ is symmetric with respect to its arguments. 
+
+
+Denote $g_{I}( z_1,\cdots,z_r) = \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i$. We write $I$ to remember that $g$ is same for elements in $I$. We show that $g_{I}$ is symmetric with respect to its arguments. 
 \begin{align}
-&g_{\mu}(Z_{\pi(1)}, \cdots,Z_{\pi(r)} )  = \\ 
-&E h(X_{\pi(1)},Y_{\pi(1)},Z_{\pi(1)}, \cdots, X_{\pi(r)},Y_{\pi(r)},Z_{\pi(r)} | Z_{\pi(1)},\cdots,Z_{\pi(r)}) = \\
-&E h(X_1,Y_1,Z_1, \cdots, X_r,Y_r,Z_r | Z_1,\cdots,Z_r) = \\
-&g_{\mu}(Z_1, \cdots,Z_r ). 
+&g_{I}(z_{\pi(1)}, \cdots,z_{\pi(r)} )  = \\ 
+& \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i = \\
+&g_{I}(z_1, \cdots,z_r ). 
 \end{align}
 
-For the fixed functions $p(x|z)p(y|z)$, the marginal distribution of $Z$ can be chosen  arbitrarily.   By Lemma \ref{the:Lemma}, $g_{\mu}=0$ for all $p(x|z)p(y|z)$.  
-
-The inner conditional expected value is 0 for almost all fixed values of $z_1, \cdots,z_r$. We only need to consider  the case   $z_i\neq z_j$ for $i\neq j$, since $P(z_i= z_j)=0$. 
-\begin{align}
-\label{ref:eqg}
- \int &h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r)  \prod_{i=1}^{r} f(x_i|z_i)f(y_i|z_i) dx_i dy_i = 0.
-\end{align}
+By Lemma \ref{the:LemmaAlt}, $g_{I}=0$ almost everywhere. 
 Let $I$ be a set of all intervals on the real line. Let  $T$ be all family of all functions $R \to I^2$. Consider a family of densities $\mathcal G$
 \[
  \mathcal G = \bigg \{ 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} p(z) | t \in T \bigg \}
 \]
-where $p(z)$ is some density. All $g \in \mathcal G$ are conditionally independent. For any element $g \in \mathcal G$.
+where $f(z)$ is some $L_1$ function. We have shown that for all $t \in T$ $g_t=0$ almost everywhere.  This means that 
 \begin{align}
-&\int h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r} 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} p(z)dx_i dy_i =\\ 
+&\int h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r} 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} dx_i dy_i =\\ 
 &\int_{a_1}^{b_1} \int_{c_1}^{d_2} \cdots \int_{a_r}^{b_r} \int_{c_r}^{d_r} h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r}  \frac{dx_i dy_i}{(b_i - a_i)(d_i-c_i) }. \\   
 \end{align}
 where $(a_i,b_i) \times (c_i,d_i) = t(z_i)$. 
@@ -214,22 +157,19 @@ Since for any  sequence $ (a_i,b_i)\times (c_i,d_i) $, there exists  $t: t(z_i) 
 \end{proof}
 
 
-\paragraph{Mistake in the proof in \cite{bergsma2004testing}.}
-In the proof of the Theorem 2 it is assumed that marginal distribution of conditioning variable has no atoms (in this case $Z$ and $Y$ are  conditionally independent given $X$). Then he claims that for any choice of points ($r$ is fixed)
-\[ (x_1 , y_1 , z_1 ), \cdots, (x_r , y_r , z_r ) \]  
-such that $x$'s are unique, there exists a measure $P$ such that
-\[
-P[(x_1 , y_1 , z_1 ), \cdots , (x_r , y_r , z_r ) ] =1. 
-\]
-I am not sure what this notation  means, I assume it denotes 
-\[
-P[(X_1=x_1 ,Y_1= y_1 , Z_1=z_1 ), \cdots , (X_r = x_r , Y_r= y_r ,Z_r z_r ) ] ) =1
-\]
-It is claimed that such a family is a subset of family of conditionally independent independent triples $Z,Y,Z$.
-\[
-P( (x_1 , y_1 , z_1 ), \cdots , (x_r , y_r , z_r ) ) \leq  P(x_1,\cdots,x_n) =0
-\]
-The last equality is by the assumption that there are no atoms on $X$ axis.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \paragraph{No tests for CI}
 
