@@ -36,143 +36,6 @@
 \section{}
 
 
-\paragraph{Fixing the proof of testability.}
-\cite{bergsma2004testing} introduces a concept of testability in attempt to prove that conditional independence is not testable, however there is a mistake in the proof.
-
-
-
-\paragraph{Alternative proof.}
-All the equations (for functions) in the following note  hold almost everywhere, unless explicitly specified otherwise.
-\begin{definition}
- A parameter  $\theta$ of a probability measure $p \in \mathcal P$, where $\mathcal P$ is a set of probability measures, is a function $\mathcal P  \to  \mathbf R$.   
-\end{definition}
-
-
-% According to \cite{bergsma2004testing} this definition is by Hoeffding (to be verified). 
-\begin{definition}[Hoeffding]
-A parameter  $\theta$ is called estimable of degree $r$, if $r$ is the smallest number for which there is a bounded function $h : \mathbf R^{r} \to \mathbf R$ such that, for all $p \in \mathcal P$, $ \theta(p) = Eh(X_1, \cdots , X_r)$ (exactly),  if $X_i$ are iid random variables sampled according to $p$.
-\end{definition}
-
-\cite{bergsma2004testing} introduces a concept of testability which is a 'syntactic sugar' on the concept of estimable parameter.
-
-\begin{definition}[testability, \cite{bergsma2004testing}]
- Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of  estimable parameters which are zero on all elements of $\mathcal{P}$.  $\mathcal{P}$ is non-testable if and only if $\Theta$ contains only $0$ function. Otherwise $\mathcal{P}$ is testable. 
-\end{definition}
-
-
-
-Non-testability implies that a statistical test based on $U$-statistics can not be conducted, which does not rule out, as remarked by G. Peters, possibility of creating tested based on some other estimators e.g. M-estimator. The lemmas we give next are a used in the proof of the Theorem  \ref{th:1}, stating non-testability of conditional independence. 
-
-\begin{lemma}
-\label{lem:aha}
- The only polynomial of $m$ variables that is zero on the $m$-dimensional simplex is $\sum_{i=1}^m x_i-1$ and $0$.  
-\end{lemma}
-\begin{proof}
-Consider restriction of the polynomial on the $R^m$ space  the affine space $\sum_{i=1}^m x_i=1$  -- this restriction is a polynomial of $m-1$ variables as seen by substitution $x_1 = 1 -\sum_{i=2}^m x_i$. This restriction zero is on the simplex $0 \leq x_i \leq 1$, therefore it must be zero on the whole affine space  $\sum_{i=1}^m x_i=1$. This is due to the fact that set of zeros of the polynomial is nowhere dense on its domain. The only polynomials that are zero on a set $\sum_{i=1}^m x_i=1$ are $\sum_{i=1}^m x_i-1$ and $0$.   
-\end{proof}
-
-
-
-\paragraph{alternative formulation for $L_1$}
-
-
-\begin{lemma}
-\label{the:Lemma}
-Let $h: R^r \to R$ be a bounded function, symmetric in its arguments, i.e. for any permutation $\pi$ of set $(1,\cdots,r)$,
-$$
-h(x_{\pi(1)},\cdots,x_{\pi(1)}) = h(x_1,\cdots,x_r).   
-$$
-If for any sequence of iid random variables $(Z_1,\cdots,Z_r)$ the expected value of $h$ is zero, i.e.
-$$
-\int h(z_1,\cdots,z_r) \prod_{i=1}^n p_i(z_i) d z_i = 0,
-$$
-then $h$ is equal to zero.
-\end{lemma}
-
-\begin{proof}
- Take $f(z) = \sum_{i=1}^{r} \alpha_{i} f(z)$ and plug it to integral. The result is polynomial in $\alpha$'s which coefficients are given by
- \[
-  \beta_{i_1,...,i_r} = \int \alpha_{i_1} p_{i_1} \cdots \alpha_{i_r} p_{i_r} h(z_1,\cdots,z_r)
- \]
-Note that $\beta$ is invariant to permutation of indexes $i_1,...,i_r$. Also all $\beta$'s are equal to zero since the polynomial is equal to zero. 
-Consider coefficient $b_{1,\cdots, n} = 0$, and put $p_i = 1{[a_i,b_i]} $
-\begin{align}
- \int \alpha_{1} p_{1}(z_1) ...\alpha_{r} p_{r}(z_r) p(z_r)\cdots \alpha_{i_r} h(z_1,\cdots,z_r) =\
- \alpha_{1}  ...\alpha_{r}  \int_{a_1}^{b_1} \cdots  \int_{a_r}^{b_r}  h(z_1,\cdots,z_r) 
-\end{align}
-
-Which means that $h$ is zero.
- 
-\end{proof}
-
-
-
-
-\begin{Theorem}
-\label{th:1}
-Let $\mathcal P = \{ p(x,y,z) \in L_1(R^3) | p(x,y,z)p(z) = p(x,z)p(y,z) \}$. If $f : R^{3n} \to R$ is such that 
-\[
- \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i = 0
-\]
-on $p \in \mathcal P$, then $h=0$ almost everywhere.
-\end{Theorem}
-
-\begin{proof}
-Assume to the contrary that such an $h$ exists. By the Fubini thorem  
-\begin{align}
- \int& \left(\int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i  \right)  \prod_{i=1}^r p(z_i)dz_i
-\end{align}
-Let $\mathcal I = \{ p'(x,y,z) \in \mathcal P | p(x,z)/p(z) = p'(x,z)/p'(z) \text{ and }(y,z)/p(z) = p'(y,z)/p'(z)$. For any $g \in L_1(R)$ there exists $p' \in I$ such that $\int p'(x,y,z) dx dz = f(z)$. We put $p' = p(x,z)p(y,z)/p(z)^2 f(z)$. We check 
-\begin{align}
- p'(x,z) = p(x,z)/p(z) f(z)
- p'(y,z) = p(y,z)/p(z) f(z)
- p'(z) = f(z)
-\end{align}
-
-
-
-Denote $g_{I}( z_1,\cdots,z_r) = \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i$. We write $I$ to remember that $g$ is same for elements in $I$. We show that $g_{I}$ is symmetric with respect to its arguments. 
-\begin{align}
-&g_{I}(z_{\pi(1)}, \cdots,z_{\pi(r)} )  = \\ 
-& \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r p(x_i,z_i)p(y_i,z_i)/p(z_i)^2 dx_i dy_i = \\
-&g_{I}(z_1, \cdots,z_r ). 
-\end{align}
-
-By Lemma \ref{the:LemmaAlt}, $g_{I}=0$ almost everywhere. 
-Let $I$ be a set of all intervals on the real line. Let  $T$ be all family of all functions $R \to I^2$. Consider a family of densities $\mathcal G$
-\[
- \mathcal G = \bigg \{ 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} p(z) | t \in T \bigg \}
-\]
-where $f(z)$ is some $L_1$ function. We have shown that for all $t \in T$ $g_t=0$ almost everywhere.  This means that 
-\begin{align}
-&\int h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r} 1\{ (x,y) \in t(z) \}  \frac{1}{vol(t(z))} dx_i dy_i =\\ 
-&\int_{a_1}^{b_1} \int_{c_1}^{d_2} \cdots \int_{a_r}^{b_r} \int_{c_r}^{d_r} h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r}  \frac{dx_i dy_i}{(b_i - a_i)(d_i-c_i) }. \\   
-\end{align}
-where $(a_i,b_i) \times (c_i,d_i) = t(z_i)$. 
-By equation \ref{ref:eqg} we have 
-\begin{align}
- \int_{a_1}^{b_1} \int_{c_1}^{d_2} \cdots \int_{a_r}^{b_r} \int_{c_r}^{d_r}& h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r}  dx_i dy_i = 0.
-\end{align}
-Since for any  sequence $ (a_i,b_i)\times (c_i,d_i) $, there exists  $t: t(z_i) = (a_i,b_i)\times (c_i,d_i) $, $h=0$. 
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\paragraph{No tests for CI}
-
 Let   $\mathbf X = (X_1,\cdots, X_n)$ be a sequence of iid random variables; for a measure $p$ we will write $\mathbf X \sim p$ to indicate that each $X_i$ is distributed according to  $P$.  Null and alternative hypothesis are a two, disjoint sets of probability measures, $\mathcal{P}$ and $\mathcal{Q}$ respectively. Here we assume that the alternative hypothesis is complement of the null hypothesis,  $\mathcal Q = \mathcal{P}^c$.  A statistical test is a measurable, symmetric function form  $\mathbf X$ to $\{0,1\}$. We say that the test $\psi$ accepts a null hypothesis if $\psi(\mathbf X)=0$, otherwise we say that test rejects of the null hypothesis. 
 
 For a statistical test $\psi$, type one error is probability that the test reject the null hypothesis 
@@ -257,6 +120,146 @@ for all $p \in \mathcal{P}$ then
  P(\psi(X_1,\cdots, X_n) = 1) \leq \alpha
 \]
 for all $p \in K$, so there exist no distribution for which type two error is small.  
+
+\begin{lemma}
+\label{lem:aha}
+ The only polynomial of $m$ variables that is zero on the $m$-dimensional simplex is $\sum_{i=1}^m x_i-1$ and $0$.  
+\end{lemma}
+\begin{proof}
+Consider restriction of the polynomial on the $R^m$ space  the affine space $\sum_{i=1}^m x_i=1$  -- this restriction is a polynomial of $m-1$ variables as seen by substitution $x_1 = 1 -\sum_{i=2}^m x_i$. This restriction zero is on the simplex $0 \leq x_i \leq 1$, therefore it must be zero on the whole affine space  $\sum_{i=1}^m x_i=1$. This is due to the fact that set of zeros of the polynomial is nowhere dense on its domain. The only polynomials that are zero on a set $\sum_{i=1}^m x_i=1$ are $\sum_{i=1}^m x_i-1$ and $0$.   
+\end{proof}
+
+
+
+Let $f(x,y,z)$ be a real valued integrable function. If we skip some of the arguments of $f$ and write e.g. $f(x,z)$ we mean function created by integrating the mising variables out, in this particular example $\int_{R} f(x,y,z) dy$.  
+
+
+Let $I$ be a set of all intervals on the real line. Let  $T$ be all family of all functions $R \to I^2$, that is for $z \in R$. Consider a family functions
+\begin{align}
+ \mathcal G' = \bigg \{ 1\{ (x,y) \in t(z) \}p(z) \frac{1}{vol(t(z))} | t \in T_2 , p \in P  \bigg \} 
+\end{align}
+where $P$ is set of all densities on $R$. If $g' \in G'$, then 
+\[
+g'(x,y,z) g'(z) = g'(x,z) g'(y,z). 
+\]
+Let $G \subset G'$, be a set of functions in $g(x,y,z) \in G'$ such that $\frac{g(x,y,z)}{g(z)}$ is a picewise constant function with respect to $z$.
+
+
+\begin{lemma}
+\label{the:Lemma}
+Let $h: R^r \to R$ be a bounded  continuous, symmetric in its arguments, i.e. for any permutation $\pi$ of set $(1,\cdots,r)$,
+$$
+h(x_{\pi(1)},\cdots,x_{\pi(1)}) = h(x_1,\cdots,x_r).   
+$$
+If for any sequence of iid random variables $(Z_1,\cdots,Z_r)$, with densities, the expected value of $h$ is zero, i.e.
+\begin{align}
+\ref{lb:the_equation}
+\int h(z_1,\cdots,z_r) \prod_{i=1}^n p(z_i) d z_i = 0, 
+\end{align}
+then $h$ is equal to zero.
+\end{lemma}
+
+\begin{proof}
+ Consider a density function $p(z) = \sum_{i=1}^{r} \alpha_{i} p_i(z)$, where $\sum_{i=1}^r \alpha_i=1$ , $\alpha_i>0$. If we plug in polynomial to the  equation \ref{lb:the_equation} and perform integration we obtain a sum o the following form
+ \[
+  f(\alpha) = \sum_{1 \leq i_1, \cdots , i_r \leq r} \alpha_{i_1} \cdots \alpha_{i_r} \beta_{i_1,...,i_r} 
+ \]
+where $\alpha$ is a vector of $\alpha_i$ and $\beta$ coefficients are given by
+ \[
+  \beta_{i_1,...,i_r} = \int  h(z_1,\cdots,z_r) \prod_{i=1}^r p_{i_r}(z_i) d z_i.
+ \]
+$f(\alpha)$ is a homogoneus, polynomial of $r$ variables. Since $\beta$ is invariant to permutation of indexes $i_1,...,i_r$,
+$f(\alpha)$ can be written
+\[
+  f(\alpha) = \sum_{1 \leq i_1 \leq  \cdots \leq i_r \leq r} \alpha_{i_1} \cdots \alpha_{i_r}  C(i_1,...,i_r) \beta_{i_1,...,i_r} 
+\]
+Where $C(i_1,...,i_r)$ is number of permutations of the set $i_1,...,i_r$ (e.g. for (1,1,...,1,2) its $r$). By the assumptions, we know that $f(\alpha) =0 $ on $r$-dimensional simplex. This imples that $f$ must be a zero poynomial; otherwise the polynomial 
+\[
+b(\alpha) = 1 -  \sum_{i=1}^r \alpha_i=1
+\]
+would be an divisor of $w$, which is impossible since $w$ is homogoneus. This means the $\beta_{1,\cdot,r} = 0$, which imiples that
+\[
+  \int  h(z_1,\cdots,z_r) \prod_{i=1}^r p_{i}(z_i) d z_i =0.
+\]
+Since $p_{i}$ are arbitrary and $h$ is continous we conclude that $h$ is zero.
+\end{proof}
+
+
+
+
+\begin{Theorem}
+\label{th:1}
+If a continous, bounded symmetric functions $h : R^{3n} \to R$ is such that 
+\[
+ \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i = 0
+\]
+for all $p \in \mathcal G$, then $h=0$ everywhere.
+\end{Theorem}
+
+\begin{proof}
+Assume to the contrary that such an $h$ exists. By the Fubini theorem  
+\begin{align}
+\int  \left( \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r 1\{ (x_i,y_i) \in t(z_i) \}   \right) \prod_{i=1}^r  p(z_i) \frac{1}{vol(t(z_i))}
+\end{align}
+Inner integral depends only on $t$ and does not depend on $p(z)$. Denote 
+\[
+g_{t}( z_1,\cdots,z_r)  = \int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r 1\{ (x_i,y_i) \in t(z_i) \} dx_i dy_i 
+\]
+It is clear that  $g_{t}$ is symmetric with respect to its arguments. By Lemma \ref{the:LemmaAlt}, since $p(z)$ can be chose arbitrarily, $g_{t}$ is zero everywhere for all $t$. Now we fix $z_1, \cdot , z_r$ and we show that  $h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) =0$. We know that for all $t$
+\begin{align}
+\int h(x_1,y_1,z_1,\cdots, x_r,y_r,z_r) \prod_{i=1}^r 1\{ (x_i,y_i) \in t(z_i) \} dx_i dy_i  =  0
+\end{align}
+for if we denote $(a_i,b_i) \times (c_i,d_i):= t(z_i)$, we have  
+\begin{align}
+\int_{a_1}^{b_1} \int_{c_1}^{d_2} \cdots \int_{a_r}^{b_r} \int_{c_r}^{d_r} h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r}  dx_i = 0 
+\end{align}
+ By equation \ref{ref:eqg} we have 
+\begin{align}
+ \int_{a_1}^{b_1} \int_{c_1}^{d_2} \cdots \int_{a_r}^{b_r} \int_{c_r}^{d_r}& h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r) \prod_{i=1}^{r}  dx_i dy_i = 0.
+\end{align}
+Since $h$ is continuous, this implies that for any fixed  $z_1, \cdot , z_r$ and we show that  $h(x_1,y_1,z_1, \cdots, x_r,y_r,z_r)$ is zero everywhere; therefore $h$ must be zero. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Old junk}
+
+\paragraph{Alternative proof.}
+All the equations (for functions) in the following note  hold almost everywhere, unless explicitly specified otherwise.
+\begin{definition}
+ A parameter  $\theta$ of a probability measure $p \in \mathcal P$, where $\mathcal P$ is a set of probability measures, is a function $\mathcal P  \to  \mathbf R$.   
+\end{definition}
+
+
+% According to \cite{bergsma2004testing} this definition is by Hoeffding (to be verified). 
+\begin{definition}[Hoeffding]
+A parameter  $\theta$ is called estimable of degree $r$, if $r$ is the smallest number for which there is a bounded function $h : \mathbf R^{r} \to \mathbf R$ such that, for all $p \in \mathcal P$, $ \theta(p) = Eh(X_1, \cdots , X_r)$ (exactly),  if $X_i$ are iid random variables sampled according to $p$.
+\end{definition}
+
+\cite{bergsma2004testing} introduces a concept of testability which is a 'syntactic sugar' on the concept of estimable parameter.
+
+\begin{definition}[testability, \cite{bergsma2004testing}]
+ Let $\mathcal{P}$ be a set of probability measures and $\mathcal{P}'$ its complement. Let $\Theta$ be a family of  estimable parameters which are zero on all elements of $\mathcal{P}$.  $\mathcal{P}$ is non-testable if and only if $\Theta$ contains only $0$ function. Otherwise $\mathcal{P}$ is testable. 
+\end{definition}
+
+
+
+Non-testability implies that a statistical test based on $U$-statistics can not be conducted, which does not rule out, as remarked by G. Peters, possibility of creating tested based on some other estimators e.g. M-estimator. The lemmas we give next are a used in the proof of the Theorem  \ref{th:1}, stating non-testability of conditional independence. 
+
+
 
 
 
