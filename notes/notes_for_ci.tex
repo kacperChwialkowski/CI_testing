@@ -162,27 +162,14 @@ Since $h$ is continuous $h=0$.
  \item $\mathbf S = \{ (X_i,Y_i,Z_i) \}_{1 \leq i \leq n}$, iid.
  \item  $\mathbf S \sim p$ means $(X_i,Y_i,Z_i) \sim p$. 
  \item Null hypotesis and alternative hypotesis is a set of probability measures.
- \item statistical test: $\psi: R^{3n} \to [0,1]$, $\psi$ in $C^b$.
- \item $\psi$ accepts if $\psi(\mathbf D) \leq \alpha$, otherwise rejects.
+ \item statistical test: $\psi: R^{3n} \to {0,1}$
+ \item $\psi$ accepts if $\psi(\mathbf D) = 0$, otherwise rejects.
  \item $\Lambda(\mathcal{A}) =  \sup_{\mathbf{S} \sim p \in \mathcal{A} }   p( \psi(\mathbf X) =1 )$
  \item Type one $\Lambda(\mathcal{H}_0)$
 \end{itemize}
  
  
-\begin{statement}
-If a continous, bounded symmetric functions $\psi : R^{3n} \to R$ is such that 
-\[
- \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i \leq \alpha
-\]
-for all $p \in \mathcal G$, then 
-\[
- \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i \leq \alpha
-\]
-for all $p$.
-\end{statement}
  
-
-{ \color{ForestGreen} 
 \begin{statement}
 If $\psi$ controls type one error on level $alpha$, then there exist a bounded, symmetric function $h: R^{3n} \to R$ such that for all $p \in \mathcal{P}$ 
 \[
@@ -198,15 +185,41 @@ If $\psi$ controls type one error on level $alpha$, then there exist a bounded, 
 $h$ is symmetric since $\psi$ is symmetric. 
 \end{proof}
 
+
+
 \begin{statement}
- Suppose $U= {\psi =1}$ is open. There exists continous, bounded $h$, such that for all measures withouth atoms ...
+ Suppose $U= {\psi =1}$ is open and has finite Lensesgue measure. If $\sup_{p \in P'} \| p \|_{\infty} =C \leq \infty$, there exists continous, bounded $h$, such that for all $S \sim p \in P'$
+ \[
+  E h(S) \leq \alpha.
+ \]
+
 \end{statement}
 \begin{proof}
- Let $F$ be a complement of $F$ and define $f_n = min(1,nd(s,F))$ (draw). $f_n \in C_b(R^{3n})$, is a  pointwise convergent (to $1U$), non-decreasing sequence od positive functions, so by Lebesgue's monotone convergence theorem there exists $N$, s.t. $|\int f_N(s) dp(s) -\int_U dp|$. There is no universal $N$  
-\end{proof}
-}
+ Let $F$ be a complement of $F$ and define $f_n = min(1,nd(s,F))$ (draw). $f_n \in C_b(R^{3n})$, is a  pointwise convergent (to $1U$), non-decreasing sequence od positive functions, so by Lebesgue's monotone convergence theorem there exists $N$ and small epsilon, 
+ \[
+ |\int (f_N(s) -1U) ds | \leq \frac{ \epsilon}{ C },
+ \]
+ and so
+ \[
+  \sup_{p \in P'} | \int (f_N(s) -1) p(s) ds | \leq \epsilon
+ \]
 
-This is too strong.
+\end{proof}
+
+\begin{Theorem}
+\label{th:1}
+If a continous, bounded symmetric functions $h : R^{3n} \to R$ is such that 
+\[
+ \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i \leq 0
+\]
+for all $p \in \mathcal G$,
+\[
+ \int_{R^{3n}} h(x_1,y_1,z_1,\cdots,x_n,y_n,z_n) \prod_{i=1}^n p(x_i,y_i,z_i) d x_i d y_i d z_i \leq 0
+\]
+for $\sup_{p \in P'} \| p \|_{\infty} =C \leq \infty$.
+\end{Theorem}
+
+
 
 
 
