@@ -153,23 +153,22 @@ and maximal power of the test is
 \[
 H(\mathcal{Q}) \sup_{p \in \mathcal{Q} }  = p( \psi(\mathbf X) =1 ).
 \]
-Type one error and maximal power is just $H$  calculated on two different sets,  $\mathcal{P}$ and $\mathcal{Q}$. The minimal requirement for a statistical test is that for any fixed level $\alpha$, $H(\mathcal{P}) \leq \alpha$ and $H(\mathcal{P}^c) > \alpha$, which amounts to saying that type one error is controlled on the level alpha and there exists an distribution form the alternative for which test power is large. If a statistical test satisfies this condition, we say it is OK. 
- 
-In order to continue we need to restrict further the class of out tests and measures bla bla 
-
-\begin{statement}
-If $\psi$ is $\alpha$ minimal test, then there exist a continuous, bounded, symmetric function $h: R^{3n} \to R$ such that for all $p \in \mathcal{P}$ 
-\[
- \int_{R^{3n}} h(x) dp(x)  \leq 0
-\]
-\end{statement}
+Type one error and maximal power is just $H$  calculated on two different sets,  $\mathcal{P}$ and $\mathcal{Q}$. The minimal requirement for a statistical test is that for any fixed level $\alpha$, $H(\mathcal{P}) \leq \alpha$ and $H(\mathcal{P}^c) > \alpha$, which amounts to saying that type one error is controlled on the level alpha and there exists an distribution form the alternative for which test power is large. If a statistical test satisfies this condition, we say it is minimal. 
+\begin{Theorem}
+ There is no minimal test for conditional independence.
+\end{Theorem}
 
 \begin{proof}
- Put $h(x) = 1_\{ \psi(x) =1 \} - \alpha$. 
+Suppose  $\psi$ is $\alpha$ minimal test, then there exist an integrable, symmetric function $h: R^{3n} \to R$ such that for all $p \in \mathcal{P}$ 
+\[
+ \int_{R^{3n}} h(x) dp(x) = 0
+\]
+
+Put $h(x) = 1_{\psi(x) =1 } - C$, where $C = P( \psi(X) =1)$. Indeed, 
  \[
-  \int_{R^{3n}} h(x) dp(x) = p( \psi(x) =1) - \alpha \leq 0.
+  \int_{R^{3n}} h(x) dp(x) = P( \psi(X) =1) - C = 0.
  \]
-$h$ is symmetric since $\psi$ is symmetric. 
+$h$ is symmetric since $\psi$ is symmetric. We use Theorem \ref{th:1} to see that $h$ is almost everywhere equal to zero.
 \end{proof}
 
 We consider set of all probability measures, with densities that allow factorization $p(x,y,z)p(z) = p(x,z)p(y,z)$, and we call this set $C$. Note that set $G \subset C$. But if integral of $h$ is zero on $G$ then its zero on on set product measures on $p \times p_1 \times \cdot \times p_r$ bu the Theorem 2 (since $h$ is zero!).  integral $h$ is continuous linear operator on measures with respect to weak topology. This means that $span(G)$ is dense in probability measures. Integral of $h$ naturally extends itself to the $span(G)$ and $span(C)$. Due to denseness  
