@@ -213,23 +213,46 @@ $W_i = k(X_i,\cdot)(k(Y_i,\cdot) - k(Y_{i+1},\cdot))$
 
  \begin{lemma}
 \label{lem:bnd}
-Let $(X,X',E)$ be random variables such that  $|X-X'| \leq |E|$. For any  $\delta$
+For any real random variables $X,X'$ and any real $\delta$
 \[
-\left | E  sgn(X) - sgn(X') \right | = O( P(|E|>\delta) + P(|X| < \delta))
+E \left |   sgn(X) - sgn(X') \right | \leq 2( P(|X-X'|>\delta) + P(|X|<\delta))
 \]
 \end{lemma} 
 \begin{proof}
-Denote $A =|sgn(X) - sgn(X')|$ 
+Let $A =|sgn(X) - sgn(X')|$ and $D = |X-X'|$ 
 \begin{align*}
-E A &= E( A | |E|>\delta) P(|E|>\delta) + E( A | |E|<\delta) P(|E|<\delta)  \\
-&= O( P(|E|>\delta) ) +  E( A | |X|>\delta, |E|<\delta) P(|E|<\delta, |X|>\delta) \\
- & \quad \quad + E( A | |X|<\delta, |E|<\delta) P(|E|<\delta, |X|<\delta) \\
-&= O( P(|E|>\delta) ) + O( P(|E|<\delta, |X|<\delta)) \\
-& \leq O( P(|E|>\delta) + P(|X|<\delta))
+E A &= E( A  \big | D>\delta) P(D>\delta) + E( A | D<\delta) P(D<\delta)  \\
+& \leq 2 P(D>\delta) +  E( A |  D<\delta, |X|>\delta) P(D<\delta, |X|>\delta) \\
+ & \quad \quad\quad\quad\quad \quad + E( A |  D<\delta, |X|>\delta) P(D<\delta, |X|<\delta) \\
+\end{align*}
+Notice that $E( A |  D<\delta, |X|>\delta)  =0$ and $ E( A |  D<\delta, |X|>\delta) \leq 2$.
+ \begin{align*}
+E A  & \leq  2P(D>\delta)  + 2P(D<\delta, |X|<\delta) \\
+& \leq 2( P(D>\delta) + P(|X|<\delta))
  \end{align*}
 \end{proof}
 
- 
+The kth multidimensional order statistic, with respect to third dimension, of a statistical sample $(X_i,Y_i,Z_i)$  is equal to vector for which random varaible $Z$ takes kth-smallest value.
+
+\begin{lemma}
+ Multidimensional order statistics, of random variables with densities, are independent
+\end{lemma}
+\begin{proof}
+ Consider rectangular cuboids 
+ \[
+  A_i = \{ x,y,z  | x_{i,d} < x < x_{i,u}, y_{i,d} < y< y_{i,u}, y_{i,d} < y < y_{i,u} \} 
+ \]
+where $z_{i,d} < z_{i,u} < z_{i+1,d}$. For any permutation $\pi$ of $n$ number 
+\[
+  P( \cap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)}) = \prod_{i=1}^n P( (Z_i,Y_i,Z_i) \in A_ {\pi(i)}) = \prod_{i=1}^n (F(x_{i,u},y_{i,u},z_{i,u}) -F(x_{i,d},y_{i,d},z_{i,d}))
+\]
+therefore each $A_\pi$ is equally probable. Each event on order stats side is 
+Notice that 
+\[
+  P( \cap_{i \leq n} (X_{i,n},Y_{i,n},Z_{i,n}) \in A_i ) = \sum_{\pi \in \Pi}   P( \cap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)})  = n!  \prod_{i=1}^n (F(x_{i,u},y_{i,u},z_{i,u}) -F(x_{i,d},y_{i,d},z_{i,d}))
+\]
+Which means that rv are independent af.
+\end{proof}
  Let
 \[
  W_i = sgn(Y_i(X_i - X_{i+1}))
@@ -241,25 +264,6 @@ Suppose $P(X_i \in B )< P(X_{i+1} \in B^{\epsilon_n} ) + \epsilon_n'$ for all Bo
 $P(d(X_{i+1},T)>\epsilon_n)< \epsilon_n'$ and $T $ is distributed as $X_i$.	
 
 
-
-
- 
-
-\paragraph{Distribution of distance between order stats}
-\begin{lemma}
- Order statistics are independent
-\end{lemma}
-\begin{proof}
- Consider a set 
- \[
-  A = {I_i, B_i, C_i}
- \]
-where $I_i < I_{i+1}$.
-\[
- P(A_\alpha) = \prod_{i=1}^n P( (Z,Y,Z)_\alpha \in (I_i, B_i, C_i)) = \prod_{i=1}^n F(x_i,b_i,c_i) - F(x_i',b_i',c_i')
-\]
-so it works.
-\end{proof}
 reDefine 
  \[
 W_i = sgn(X_i(Y_i - Y_{i+1}))1{ X_{i+1} - X_i < \frac 1 n  }  
@@ -269,13 +273,13 @@ if indicator does not work the expected value and variance are zero.  Otherwise 
 \begin{Theorem}
 If $X_i,Y_i,Z_i$ is are 'p-good' and $P(|X_i| <t) <Ct$,  $P( |Y_i| <t) <Ct$ for small $t$ and then
 \[
- \frac{1}{\sqrt S_n} \sum_{j=0;j=+2;n}  \sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) 1_{Z_{i+1,n} - Z_{i,n} < \frac 1 n }  
+ \frac{1}{\sqrt S_n} \sum_{j=0;j=+2;n}  sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) 1_{Z_{i+1,n} - Z_{i,n} < \frac 1 n }  
 \]
 converges to standard normal distribution  if and only iff  $X_i,Y_i,Z_i$ are conditionally independent. Where $S_n = \sum_{j=0;j=+2;n} 1_{Z_{i+1,n} - Z_{i,n} < \frac 1 n }$
 \end{Theorem}
 \begin{proof}
 The sqequance $(X_{i,n},Y_{i,n},Z_{i,n})$ is a sequence of independent random variables (prove). Denote 
-$W  = \sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) $
+$W  = sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) $
 
 
 If $Z_{i+1,n} - Z_{i,n} < \frac 1 n$ then $Var W_{i,n}= 1- (E W_{i,n})^2 $
