@@ -238,20 +238,24 @@ The kth multidimensional order statistic, with respect to third dimension, of a 
  Multidimensional order statistics, of random variables with densities, are independent
 \end{lemma}
 \begin{proof}
- Consider rectangular cuboids 
+ Consider a $\pi$-system on  $PP \in R^{3n}$ with $i$-th set defined as
  \[
-  A_i = \{ x,y,z  | x_{i,d} < x < x_{i,u}, y_{i,d} < y< y_{i,u}, y_{i,d} < y < y_{i,u} \} 
+  A_i = \{ x,y,z  |  x \leq x_i,  y  \leq y_{i},z_i' \leq z \leq z_i \} 
  \]
-where $z_{i,d} < z_{i,u} < z_{i+1,d}$. For any permutation $\pi$ of $n$ number 
+where $z_{i} < z_{i+1}'$.  This $\pi$-system generates Borel sigma algebra on $PP$, since its intersection with itself contains all intervals on $PP$.  For any permutation $\pi$ of $n$ numbers
 \[
-  P( \cap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)}) = \prod_{i=1}^n P( (Z_i,Y_i,Z_i) \in A_ {\pi(i)}) = \prod_{i=1}^n (F(x_{i,u},y_{i,u},z_{i,u}) -F(x_{i,d},y_{i,d},z_{i,d}))
+  P( \bigcap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)}) = \prod_{i=1}^n P( (Z_i,Y_i,Z_i) \in A_ {\pi(i)}) = \prod_{i=1}^n F(x_{i},y_{i},z_{i}') - F(z_{i}) .
 \]
-therefore each $A_\pi$ is equally probable. Each event on order stats side is 
 Notice that 
 \[
-  P( \cap_{i \leq n} (X_{i,n},Y_{i,n},Z_{i,n}) \in A_i ) = \sum_{\pi \in \Pi}   P( \cap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)})  = n!  \prod_{i=1}^n (F(x_{i,u},y_{i,u},z_{i,u}) -F(x_{i,d},y_{i,d},z_{i,d}))
+ \bigcap_{i \leq n} \{ (X_{i,n},Y_{i,n},Z_{i,n}) \in A_i \} = \bigcup_{\pi \in \Pi}   \bigcap_{i \leq n} \{ (X_i,Y_i,Z_i) \in A_{\pi(i)} \}
 \]
-Which means that rv are independent af.
+and for two different permutations $\pi$,$\pi'$ events  $\bigcap_{i \leq n} \{ (X_i,Y_i,Z_i) \in A_{\pi(i)} \}$ and $\bigcap_{i \leq n} \{ (X_i,Y_i,Z_i) \in A_{\pi(i)'} \}$  have empty intersection. Therefore
+\begin{align*}
+  P( \bigcap_{i \leq n} (X_{i,n},Y_{i,n},Z_{i,n}) \in A_i ) &=  \sum_{\pi \in \Pi}   P( \bigcap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)})  \\ 
+ & =  n!  \prod_{i=1}^n F(x_{i},y_{i},z_{i}') - F(z_{i})   
+\end{align*}
+We have shown that cumulative density function factorizes on the $\pi$-system  which implies it factorizes on the Borel sigma algebra on $P$ (which implies independence).
 \end{proof}
  Let
 \[
