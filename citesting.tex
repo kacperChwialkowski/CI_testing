@@ -232,17 +232,18 @@ E A  & \leq  2P(D>\delta)  + 2P(D<\delta, |X|<\delta) \\
  \end{align*}
 \end{proof}
 
-The kth multidimensional order statistic, with respect to third dimension, of a statistical sample $(X_i,Y_i,Z_i)$  is equal to vector for which random varaible $Z$ takes kth-smallest value.
+The kth multidimensional order statistic, with respect to third dimension, of a statistical sample $(X_i,Y_i,Z_i)$  is equal to vector for which random varaible $Z$ takes kth-smallest value. We donte those multidimensional order statistic by $ (X_{i,n},Y_{i,n},Z_{i,n}) $; they are defined on the subset on $R^{+3n} \subset R^{3n}$ such that $z_1\leq \cdots \leq z_n$.  
 
 \begin{lemma}
+\label{lem:orderStats}
  Multidimensional order statistics, of random variables with densities, are independent
 \end{lemma}
 \begin{proof}
- Consider a $\pi$-system on  $PP \in R^{3n}$ with $i$-th set defined as
+ Consider a $\pi$-system on  $R^{+3n} \subset R^{3n}$ with $i$-th set defined as
  \[
   A_i = \{ x,y,z  |  x \leq x_i,  y  \leq y_{i},z_i' \leq z \leq z_i \} 
  \]
-where $z_{i} < z_{i+1}'$.  This $\pi$-system generates Borel sigma algebra on $PP$, since its intersection with itself contains all intervals on $PP$.  For any permutation $\pi$ of $n$ numbers
+where $z_{i} < z_{i+1}'$.  This $\pi$-system generates Borel sigma algebra on $R^{+3n}$, since its intersection with itself contains all intervals on $R^{+3n}$.  For any permutation $\pi$ of $n$ numbers
 \[
   P( \bigcap_{i \leq n} (X_i,Y_i,Z_i) \in A_{\pi(i)}) = \prod_{i=1}^n P( (Z_i,Y_i,Z_i) \in A_ {\pi(i)}) = \prod_{i=1}^n F(x_{i},y_{i},z_{i}') - F(z_{i}) .
 \]
@@ -275,19 +276,27 @@ W_i = sgn(X_i(Y_i - Y_{i+1}))1{ X_{i+1} - X_i < \frac 1 n  }
 if indicator does not work the expected value and variance are zero.  Otherwise the we have expected value smaller than $\frac 1 n$ and some variance 
 
 \begin{Theorem}
-If $X_i,Y_i,Z_i$ is are 'p-good' and $P(|X_i| <t) <Ct$,  $P( |Y_i| <t) <Ct$ for small $t$ and then
+Suppose that if $Z_{i+1,n} - Z_{i,n} < \frac 1 n$ then $\| \mu_{X_{i,n},Y_{i,n}|Z_{i,n}} - \mu_{X_{i+1,n},Y_{i+1,n}|Z_{i+1,n}}  \| \leq \frac 1 n$ and $P(|X_i| <t) <Ct$,  $P( |Y_i| <t) <Ct$ for small $t$ and then
 \[
  \frac{1}{\sqrt S_n} \sum_{j=0;j=+2;n}  sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) 1_{Z_{i+1,n} - Z_{i,n} < \frac 1 n }  
 \]
 converges to standard normal distribution  if and only iff  $X_i,Y_i,Z_i$ are conditionally independent. Where $S_n = \sum_{j=0;j=+2;n} 1_{Z_{i+1,n} - Z_{i,n} < \frac 1 n }$
 \end{Theorem}
 \begin{proof}
-The sqequance $(X_{i,n},Y_{i,n},Z_{i,n})$ is a sequence of independent random variables (prove). Denote 
-$W  = sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega))) $
+By the Lemma \ref{lem:orderStats} the sqequance $(X_{i,n},Y_{i,n},Z_{i,n})$ is a sequence of independent random variables. Denote 
+\[
+W_{i,n}  = sgn(k(X_{i,n}, \omega) ( k(Y_{i,n}, \omega) - k(Y_{i+1,n}, \omega)))  
+\]
 
-
-If $Z_{i+1,n} - Z_{i,n} < \frac 1 n$ then $Var W_{i,n}= 1- (E W_{i,n})^2 $
-$E W_{i,n} = O(P(|Y_i||X_{i+1,n} -T| > \epsilon) + P(|Y_i||X_{i,n}-T|) > \epsilon)$ where $T \sim X_{i,n}$ and $P(|X_{i+1,n} -T| > \epsilon|) \leq \epsilon $ 
+If $Z_{i+1,n} - Z_{i,n} < \frac 1 n$ then the expected value is, by the Lemma \ref{lem:bnd},
+\[
+E W_{i,n} = O(P(|Y_i||X_{i+1,n} -T| > \epsilon) + P(|Y_i||X_{i,n}-T|) > \epsilon)  
+\]
+ where $T \sim X_{i,n}$ and $P(|X_{i+1,n} -T| > \epsilon|) \leq \epsilon $ 
+\[
+Var W_{i,n}= 1- (E W_{i,n})^2
+\]
+and t
 
 Assume further that $Y_{i,n}$ are bounded. Put $\epsilon$ to $o(\frac 1 n) $ and use assumptions to get $ E W_{i,n} = o(\frac 1 n)$.
 
